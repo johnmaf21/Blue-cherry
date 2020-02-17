@@ -22,7 +22,7 @@ public class Help extends AppCompatActivity {
         //set help selected
         bottomNavigationView.setSelectedItemId(R.id.help);
 
-        //set botton selected
+        //set button selected
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -42,6 +42,13 @@ public class Help extends AppCompatActivity {
                     case R.id.account:
                         startActivity(new Intent(getApplicationContext()
                                 ,Account.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.events:
+                        System.out.println("case test");
+                        startActivity(new Intent(getApplicationContext(),
+                                Events.class));
+                        System.out.println("goes to activety");
                         overridePendingTransition(0,0);
                         return true;
                 }

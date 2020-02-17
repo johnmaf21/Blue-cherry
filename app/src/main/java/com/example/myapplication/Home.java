@@ -33,7 +33,6 @@ public class Home extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext()
                                 ,Help.class));
                         overridePendingTransition(0,0);
-                        System.out.println("help working");
                         return true;
                     case R.id.about_us:
                         startActivity(new Intent(getApplicationContext()
@@ -45,6 +44,12 @@ public class Home extends AppCompatActivity {
                                 ,Account.class));
                         overridePendingTransition(0,0);
                         return true;
+                    case R.id.events:
+                        startActivity(new Intent(getApplicationContext()
+                                ,Events.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
                 }
                 return false;
             }

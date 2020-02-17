@@ -44,6 +44,11 @@ public class About extends AppCompatActivity {
                                 ,Account.class));
                         overridePendingTransition(0,0);
                         return true;
+                    case R.id.events:
+                        startActivity(new Intent(getApplicationContext(),
+                                Events.class));
+                        overridePendingTransition(0,0);
+                        return true;
                 }
                 return false;
             }
