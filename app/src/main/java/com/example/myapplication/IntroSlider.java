@@ -1,4 +1,4 @@
-package com.example.logindemo;
+package com.example.myapplication;
 
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;

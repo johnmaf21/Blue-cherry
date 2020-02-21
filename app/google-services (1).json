@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "311296646728",
+    "firebase_url": "https://funbook-bfd76.firebaseio.com",
+    "project_id": "funbook-bfd76",
+    "storage_bucket": "funbook-bfd76.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:311296646728:android:f8afc1e06c5caec99ec27d",
+        "android_client_info": {
+          "package_name": "com.example.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "311296646728-0e0hdmu8akohld6m1pis3asoj49b1fm3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmfpLWGgolJRSkQQkHjfS3Cqu2JWD3Tao"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "311296646728-0e0hdmu8akohld6m1pis3asoj49b1fm3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:311296646728:android:5bf398fd219c60829ec27d",
+        "android_client_info": {
+          "package_name": "com.example.logindemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "311296646728-0e0hdmu8akohld6m1pis3asoj49b1fm3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBmfpLWGgolJRSkQQkHjfS3Cqu2JWD3Tao"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "311296646728-0e0hdmu8akohld6m1pis3asoj49b1fm3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
