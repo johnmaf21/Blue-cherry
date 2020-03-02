@@ -1,4 +1,21 @@
 <resources>
     <string name="app_name">Blue Cherry</string>
     <string name="coding_in_flow">Coding in flow</string>
+    <string name="title_activity_confirmation">Confirmation</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="congratulations">Congratulations! You are going to</string>
+    <string name="festive">Festival Name</string>
+    <string name="order">Order Total</string>
+    <string name="total">£20</string>
+    <string name="location">Location</string>
+    <string name="time">1800 till late</string>
+    <string name="date">01/01/01</string>
+    <string name="address">Blue Cherry,Southgate, HD1 3DH</string>
+    <string name="contactDetails">Contact us: </string>
+    <string name="email">someone@somewhere.com</string>
+    <string name="phoneNumber">077770000</string>
+    <string name="todo">TODO</string>
+
 </resources>
