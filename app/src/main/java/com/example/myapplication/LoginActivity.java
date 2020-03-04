@@ -23,17 +23,19 @@ public class LoginActivity extends AppCompatActivity {
     private EditText name;
     private EditText password;
     private Button login;
+    private Button forgotPassword;
     private SessionManager session;
     private CollectionReference mCollRef= FirebaseFirestore.getInstance().collection("bc_Users");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         name = (EditText) findViewById(R.id.email);
         password = (EditText) findViewById(R.id.password);
         login = (Button) findViewById(R.id.btnLogin);
+        forgotPassword = (Button) findViewById(R.id.openForgotPasswordPage);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +55,14 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, ForgotPassword.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void validate(final String userName, final String userPassword) {
@@ -65,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 System.out.println(document.getId()+" "+document.getData().toString());
                                 if (document.get("email").toString().equals(userName) && document.get("password").toString().equals(userPassword)){
-                                    Intent intent = new Intent(LoginActivity.this, SecondActivity.class);
+                                    Intent intent = new Intent(LoginActivity.this, Home.class);
                                     startActivity(intent);
                                 }
                             }

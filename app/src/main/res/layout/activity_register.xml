@@ -7,6 +7,23 @@
     android:background="@drawable/coachella"
     tools:context=".Register">
 
+    <Button
+        android:id="@+id/openLocationPage"
+        android:layout_width="124dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="96dp"
+        android:background="#FFFFE0"
+        android:text="NEXT"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password"
+        app:layout_constraintVertical_bias="0.166" />
+
     <ImageView
         android:id="@+id/imageView8"
         android:layout_width="33dp"
@@ -36,7 +53,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/register_email5"
+        app:layout_constraintEnd_toStartOf="@+id/phoneno"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -44,7 +61,7 @@
         app:srcCompat="@drawable/ic_phone_android_black_24dp" />
 
     <EditText
-        android:id="@+id/register_email5"
+        android:id="@+id/phoneno"
         android:layout_width="220dp"
         android:layout_height="45dp"
         android:layout_marginStart="8dp"
@@ -92,7 +109,7 @@
         app:layout_constraintVertical_bias="0.432" />
 
     <EditText
-        android:id="@+id/register_email"
+        android:id="@+id/register_name"
         android:layout_width="220dp"
         android:layout_height="45dp"
         android:layout_marginStart="8dp"
@@ -150,7 +167,7 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/register_email"
+        app:layout_constraintEnd_toStartOf="@+id/register_name"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

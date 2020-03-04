@@ -8,6 +8,7 @@ public class IntroSlider extends AppCompatActivity {
 
     ViewPager viewPager;
     SliderAdapter sliderAdapter;
+    int[] layouts = new int[]{R.layout.slide,R.layout.slide2,R.layout.slide3};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
