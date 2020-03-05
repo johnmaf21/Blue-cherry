@@ -11,13 +11,16 @@ public class SliderAdapter extends PagerAdapter {
 
     Context context;
     LayoutInflater inflater;
-    public SliderAdapter(Context context){
+    int[] layouts;
+
+    public SliderAdapter(Context context, int[] layouts){
         this.context=context;
+        this.layouts=layouts;
     }
 
     @Override
     public int getCount() {
-        return 0;
+        return layouts.length;
     }
 
     @Override
@@ -27,14 +30,16 @@ public class SliderAdapter extends PagerAdapter {
 
     @Override
     public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-        super.destroyItem(container, position, object);
+        View view = (View) object;
+        container.removeView(view);
     }
 
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.slide,container,false);
-        return super.instantiateItem(container, position);
+        View view = inflater.inflate(layouts[position],container,false);
+        container.addView(view);
+        return view;
     }
 }
