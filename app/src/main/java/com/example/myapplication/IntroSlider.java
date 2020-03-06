@@ -31,6 +31,7 @@ public class IntroSlider extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro_slider);
+        setStatusBarTransparent();
 
 
         if (!isFirstTimeStartApp()){
@@ -40,7 +41,6 @@ public class IntroSlider extends AppCompatActivity {
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         layoutDot = (LinearLayout) findViewById(R.id.dotLayout);
 
-        setStatusBarTransparent();
         openLogin = (Button) findViewById(R.id.homeLogin);
         openRegister = (Button) findViewById(R.id.homeRegister);
         openRegister.setVisibility(View.INVISIBLE);
@@ -111,7 +111,7 @@ public class IntroSlider extends AppCompatActivity {
 
     private void setStatusBarTransparent(){
         if (Build.VERSION.SDK_INT >=21){
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE|View.SYSTEM_UI_FLAG_FULLSCREEN);
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
             Window window = getWindow();
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(Color.TRANSPARENT);
