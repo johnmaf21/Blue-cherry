@@ -6,20 +6,52 @@
     android:layout_height="match_parent"
     tools:context=".IntroSlider">
 
+    <Button
+        android:id="@+id/homeRegister"
+        android:layout_width="110dp"
+        android:layout_height="56dp"
+        android:layout_marginTop="450dp"
+        android:layout_marginEnd="130dp"
+        android:background="#FFFFE0"
+        android:text="Register"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/viewpager"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        tools:layout_editor_absoluteX="0dp"></androidx.viewpager.widget.ViewPager>
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp">
+
+
+    </androidx.viewpager.widget.ViewPager>
+
+    <Button
+        android:id="@+id/homeLogin"
+        android:layout_width="110dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="450dp"
+        android:background="#FFFFE0"
+        android:text="Login"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/viewpager"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/dotLayout"
         android:layout_width="match_parent"
-        android:layout_height="30dp"
+        android:layout_height="60dp"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"></LinearLayout>
