@@ -104,7 +104,7 @@ public class EnterLocation extends AppCompatActivity {
                     @Override
                     public void onSuccess(Void aVoid) {
                         Log.d("DocSnippets", "DocumentSnapshot successfully written!");
-                        Intent intent = new Intent(EnterLocation.this, Home.class);
+                        Intent intent = new Intent(EnterLocation.this, LoginActivity.class);
                         startActivity(intent);
                     }
                 })
