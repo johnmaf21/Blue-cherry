@@ -13,7 +13,6 @@ import android.widget.VideoView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class About extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
