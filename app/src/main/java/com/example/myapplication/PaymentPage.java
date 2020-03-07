@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ public class PaymentPage extends AppCompatActivity {
     private EditText name, cardNo, cvc, expiry;
     private TextView textWrongInput;
     private Button confirm, back;
+    private int checkAll;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,38 +64,61 @@ public class PaymentPage extends AppCompatActivity {
 
         //Initialise xml ID/variables
         //Edit Text
-        name = (EditText) findViewById(R.id.payEditTextName);
+        name = (EditText) findViewById(R.id.payEditTextCard);
         cardNo = (EditText) findViewById(R.id.payEditTextCard);
         cvc = (EditText) findViewById(R.id.payEditTextCVC);
         expiry = (EditText) findViewById(R.id.payEditTextExpiry);
         //Text View
         textWrongInput = (TextView) findViewById(R.id.payTextViewWrong);
         //Buttons
-        confirm = (Button) findViewById(R.id.payBtnConfirm);
-        back = (Button) findViewById(R.id.payBtnBack);
+        confirm = (Button) findViewById(R.id.eventButton1);
+        back = (Button) findViewById(R.id.eventButton2);
+
+        confirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (validateCardNumber() == true && validateCVC() == true) {
+                    Intent intent = new Intent(PaymentPage.this, Confirmation.class);
+                    startActivity(intent);
+                }
+                else{
+                    textWrongInput.setText("Invalid card information");
+                }
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                    Intent intent = new Intent(PaymentPage.this, Home.class);
+                    startActivity(intent);
+            }
+        });
     }
 
+    //Validation methods
     private boolean validateCardNumber() {
-        if (cardNo.getTextSize() > 0 || cardNo.getTextSize() <= 14) {
-            Intent intent = new Intent(PaymentPage.this, Home.class);
-            startActivity(intent);
+        while (cardNo.getTextSize() == 13) {
             return true;
         }
-        else{textWrongInput.setText("Invalid Card Number");}
+        while(cardNo.getTextSize() != 13){
+            return false;
+        }
         return false;
     }
+
 
     private boolean validateCVC() {
-        if (cvc.getTextSize() > 0 || cvc.getTextSize() <= 3) {
-            Intent intent = new Intent(PaymentPage.this, Home.class);
-            startActivity(intent);
+        while (cvc.getTextSize() == 3) {
             return true;
         }
-        else{textWrongInput.setText("Invalid CVC Number");}
+        while(cvc.getTextSize() != 3){
+            return false;
+        }
         return false;
     }
 
-    //The Expiry date is bound to completely change ignore this method and the expiry implemented in the XML
+    //This method is the incorrect method for
 //    private boolean validateExpiry() {
 //        if (cardNo.getTextSize() > 0 || cardNo.getTextSize() < 14) {
 //            Intent intent = new Intent(PaymentPage.this, Home.class);
