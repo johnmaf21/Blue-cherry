@@ -10,10 +10,17 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="About Us"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="105dp"
+        android:layout_marginTop="47dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="617dp"
+        android:text="@string/about_us"
         android:textSize="50sp"
-        android:textStyle="bold"
-        android:layout_centerInParent="true"/>
+        android:textStyle="bold" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
@@ -24,5 +31,33 @@
         app:itemIconTint="@drawable/selector"
         app:menu="@menu/menu_navigation"
         android:layout_alignParentBottom="true"/>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="188dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="401dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="142dp"
+        android:text="@string/blue_cherry_conducted_a_research_by_issuing_out_an_online_questionnaire_to_potential_users_of_the_funbook_app_below_are_the_suggestions_we_received_from_those_who_filled_out_the_questionnaire_in_terms_of_the_user_requirements_thereafter_are_screenshots_of_the_answers_received_as_proof_of_the_conducted_research"
+        android:textSize="19sp" />
+
+    <VideoView
+        android:id="@+id/video_view"
+        android:layout_width="wrap_content"
+        android:layout_height="234dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="139dp"
+        android:layout_marginEnd="13dp"
+        android:layout_marginBottom="358dp" />
 
 </RelativeLayout>
