@@ -107,6 +107,7 @@ public class PaymentPage extends AppCompatActivity {
         return false;
     }
 
+
     private boolean validateCVC() {
         while (cvc.getTextSize() == 3) {
             return true;
