@@ -57,7 +57,7 @@ public class About extends AppCompatActivity {
         });
 
         VideoView videoView = findViewById(R.id.video_view);
-        String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.Funbook;
+        String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.funbook;
         Uri uri = Uri.parse(videoPath);
         videoView.setVideoURI(uri);
 
