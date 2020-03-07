@@ -46,7 +46,6 @@
         android:layout_marginBottom="142dp"
         android:text="Blue cherry conducted a research by issuing out an online questionnaire to potential users of the funbook app below are the suggestions we received from those who filled out the questionnaire in terms of the user requirements there after are screenshots of the answers received as proof of the conducted research"
         android:textSize="19sp" />
-
     <VideoView
         android:id="@+id/video_view"
         android:layout_width="wrap_content"
