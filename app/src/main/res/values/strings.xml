@@ -5,8 +5,8 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
-    <string name="congratulations">Congratulations! You are going to</string>
-    <string name="festive">Festival Name</string>
+    <string name="congratulations">Its Confirmed! You are going to: </string>
+    <string name="festive">Event Name</string>
     <string name="order">Order Total</string>
     <string name="total">£20</string>
     <string name="location">Location</string>
@@ -17,5 +17,6 @@
     <string name="email">someone@somewhere.com</string>
     <string name="phoneNumber">077770000</string>
     <string name="todo">TODO</string>
+    <string name="Confirmation">Confirmation page</string>
 
 </resources>

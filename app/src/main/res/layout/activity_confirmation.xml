@@ -5,15 +5,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/pageBackground"
     tools:context=".Events">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/bottom_navigation"
-        app:itemBackground="@color/colorPrimary"
-        app:itemTextColor="@drawable/selector"
-        app:itemIconTint="@drawable/selector"
+        app:itemBackground="@color/navigationBackground"
+        app:itemTextColor="@color/icon"
+        app:itemIconTint="@color/icon"
         app:menu="@menu/menu_navigation"
         android:layout_alignParentBottom="true"/>
 
@@ -22,33 +23,37 @@
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="627dp"
-        android:background="#008577" />
+        android:layout_marginBottom="638dp"
+        android:background="@color/navigationBackground" />
 
     <TextView
         android:id="@+id/appName"
-        android:layout_width="87dp"
-        android:layout_height="wrap_content"
+        android:layout_width="265dp"
+        android:layout_height="35dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="82dp"
-        android:layout_marginEnd="241dp"
-        android:layout_marginBottom="638dp"
-        android:text="@string/app_name" />
+        android:layout_marginStart="18dp"
+        android:layout_marginEnd="128dp"
+        android:layout_marginBottom="654dp"
+        android:text="@string/Confirmation"
+        android:textSize="20sp"
+        android:textColor="@color/navigationBackground"/>
 
     <TextView
         android:id="@+id/date"
-        android:layout_width="194dp"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="119dp"
-        android:layout_marginEnd="98dp"
-        android:layout_marginBottom="233dp"
+        android:layout_marginStart="127dp"
+        android:layout_marginEnd="73dp"
+        android:layout_marginBottom="125dp"
         android:ems="10"
-        android:text="@string/date" />
+        android:text="@string/date"
+        android:textSize="20sp"
+        android:textColor="@color/navigationBackground"/>
 
     <TextView
         android:id="@+id/time"
@@ -57,83 +62,55 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="120dp"
-        android:layout_marginEnd="77dp"
-        android:layout_marginBottom="199dp"
+        android:layout_marginStart="125dp"
+        android:layout_marginEnd="72dp"
+        android:layout_marginBottom="78dp"
         android:ems="10"
-        android:text="@string/time" />
-
-    <TextView
-        android:id="@+id/contactUs"
-        android:layout_width="72dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="23dp"
-        android:layout_marginEnd="316dp"
-        android:layout_marginBottom="93dp"
-        android:text="@string/contactDetails" />
-
-    <TextView
-        android:id="@+id/contactEmail"
-        android:layout_width="232dp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="126dp"
-        android:layout_marginEnd="53dp"
-        android:layout_marginBottom="93dp"
-        android:text="@string/email" />
-
-    <TextView
-        android:id="@+id/contactPhone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="126dp"
-        android:layout_marginEnd="67dp"
-        android:layout_marginBottom="63dp"
-        android:text="@string/phoneNumber" />
+        android:text="@string/time"
+        android:textSize="20sp"
+        android:textColor="@color/navigationBackground"/>
 
     <TextView
         android:id="@+id/location"
-        android:layout_width="75dp"
+        android:layout_width="88dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="26dp"
-        android:layout_marginEnd="310dp"
-        android:layout_marginBottom="130dp"
-        android:text="@string/location" />
+        android:layout_marginStart="9dp"
+        android:layout_marginEnd="314dp"
+        android:layout_marginBottom="203dp"
+        android:text="@string/location"
+        android:textSize="20sp"
+        android:textColor="@color/navigationBackground"/>
 
     <TextView
         android:id="@+id/address"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="274dp"
+        android:layout_height="74dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="129dp"
-        android:layout_marginEnd="58dp"
-        android:layout_marginBottom="130dp"
-        android:text="@string/address" />
+        android:layout_marginStart="126dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="164dp"
+        android:text="@string/address"
+        android:textSize="20sp"
+        android:textColor="@color/navigationBackground"/>
 
     <TextView
         android:id="@+id/orderTotal"
-        android:layout_width="95dp"
+        android:layout_width="112dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="13dp"
-        android:layout_marginEnd="302dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="294dp"
         android:layout_marginBottom="269dp"
-        android:text="@string/order" />
+        android:text="@string/order"
+        android:textSize="20sp"
+        android:textColor="@color/navigationBackground"/>
 
     <TextView
         android:id="@+id/total"
@@ -145,19 +122,23 @@
         android:layout_marginStart="153dp"
         android:layout_marginEnd="135dp"
         android:layout_marginBottom="269dp"
-        android:text="@string/total" />
+        android:text="@string/total"
+        android:textSize="20sp"
+        android:textColor="@color/navigationBackground"/>
 
     <TextView
         android:id="@+id/congrats"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
+        android:layout_width="341dp"
+        android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="126dp"
-        android:layout_marginEnd="155dp"
-        android:layout_marginBottom="570dp"
-        android:text="@string/congratulations" />
+        android:layout_marginStart="7dp"
+        android:layout_marginEnd="63dp"
+        android:layout_marginBottom="569dp"
+        android:text="@string/congratulations"
+        android:textSize="24sp"
+        android:textColor="@color/navigationBackground"/>
 
     <TextView
         android:id="@+id/festivalName"
@@ -168,8 +149,10 @@
         android:layout_alignParentBottom="true"
         android:layout_marginStart="128dp"
         android:layout_marginEnd="153dp"
-        android:layout_marginBottom="527dp"
-        android:text="@string/festive" />
+        android:layout_marginBottom="536dp"
+        android:text="@string/festive"
+        android:textSize="20sp"
+        android:textColor="@color/navigationBackground"/>
 
     <ImageView
         android:id="@+id/imageView6"
@@ -185,7 +168,19 @@
         android:layout_marginBottom="320dp"
         android:adjustViewBounds="true"
         android:contentDescription="@string/todo"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/coachella"/>
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="164dp"
+        android:layout_height="75dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="-20dp"
+        android:layout_marginBottom="652dp"
+        android:contentDescription="@string/todo"
+        app:srcCompat="@drawable/confirm" />
 
 
 </RelativeLayout>
