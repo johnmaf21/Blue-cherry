@@ -30,6 +30,13 @@ public class Home extends AppCompatActivity {
         //Initialize the Buttons
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
 
+        Button button1 = findViewById(R.id.eventButton1);
+        Button button2 = findViewById(R.id.eventButton2);
+        Button button3 = findViewById(R.id.eventButton3);
+        Button button4 = findViewById(R.id.eventButton4);
+        Button button5 = findViewById(R.id.eventButton5);
+        Button button6 = findViewById(R.id.eventButton6);
+
         //set home selected
         bottomNavigationView.setSelectedItemId(R.id.home);
 
