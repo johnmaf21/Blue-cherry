@@ -6,10 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Events extends AppCompatActivity {
+    private TextView evName, evDesc, evLocation, evPrice, evStartTime, evEndTime, evAvTickets;
+    private Button purchaseBtn, backBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +58,15 @@ public class Events extends AppCompatActivity {
                 return false;
             }
         });
+
+        evName = (TextView) findViewById(R.id.eventName);
+        evDesc = (TextView) findViewById(R.id.eventDescription);
+        evPrice = (TextView) findViewById(R.id.eventPrice);
+        evAvTickets = (TextView) findViewById(R.id.ticketsAvailable);
+        evLocation = (TextView) findViewById(R.id.eventLocation);
+        evStartTime = (TextView) findViewById(R.id.startTime);
+        evEndTime = (TextView) findViewById(R.id.endTime);
+
     }
 
     }

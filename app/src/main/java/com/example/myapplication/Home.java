@@ -40,7 +40,7 @@ public class Home extends AppCompatActivity {
         //set home selected
         bottomNavigationView.setSelectedItemId(R.id.home);
 
-        //set button selected
+        //set bottom bar selection
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -67,10 +67,14 @@ public class Home extends AppCompatActivity {
             }
         });
 
+        //set Firebase intent to allow passing data through home page to event page
+        final Intent intent = new Intent(Home.this, Events.class);
+
         //Button function
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                intent.putExtra("london1","valueLondon1");
                 Intent intent = new Intent(Home.this, Events.class);
                 startActivity(intent);
             }
@@ -78,6 +82,7 @@ public class Home extends AppCompatActivity {
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                intent.putExtra("london2","valueLondon2");
                 Intent intent = new Intent(Home.this, Events.class);
                 startActivity(intent);
             }
