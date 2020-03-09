@@ -31,8 +31,6 @@ public class Confirmation extends AppCompatActivity {
     private TextView address;
     private TextView date;
     private TextView time;
-    private TextView email;
-    private TextView phone;
     private TextView totalPrice;
     private TextView festivalName;
     private CollectionReference mCollRef = FirebaseFirestore.getInstance().collection("bc_Event");
