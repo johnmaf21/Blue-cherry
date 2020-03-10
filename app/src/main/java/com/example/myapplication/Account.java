@@ -11,6 +11,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Account extends AppCompatActivity {
 
+    private String eventID;
+    private String userID;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,33 +31,42 @@ public class Account extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext()
-                                ,Home.class));
+                        Intent intent = new Intent(getBaseContext(),Home.class);
+                        intent.putExtra("userID",userID);
+                        intent.putExtra("eventID",eventID);
+                        startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.help:
-                        startActivity(new Intent(getApplicationContext()
-                                ,Help.class));
+                        intent = new Intent(getBaseContext(),Help.class);
+                        intent.putExtra("userID",userID);
+                        intent.putExtra("eventID",eventID);
+                        startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.about_us:
-                        startActivity(new Intent(getApplicationContext()
-                                ,About.class));
+                        intent = new Intent(getBaseContext(),About.class);
+                        intent.putExtra("userID",userID);
+                        intent.putExtra("eventID",eventID);
+                        startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.account:
-                        startActivity(new Intent(getApplicationContext()
-                                ,Account.class));
-                        overridePendingTransition(0,0);
                         return true;
                     case R.id.events:
-                        startActivity(new Intent(getApplicationContext(),
-                                Events.class));
+                        intent = new Intent(getBaseContext(),Events.class);
+                        intent.putExtra("userID",userID);
+                        intent.putExtra("eventID",eventID);
+                        startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
+
                 }
                 return false;
             }
         });
+        final Bundle intent2 = getIntent().getExtras();
+        eventID = intent2.getString("eventID");
+        userID = intent2.getString("userID");
     }
 }

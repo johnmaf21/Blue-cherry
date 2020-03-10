@@ -63,23 +63,31 @@ public class Events extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext()
-                                ,Home.class));
+                        Intent intent = new Intent(getBaseContext(),Home.class);
+                        intent.putExtra("userID",userID);
+                        intent.putExtra("eventID",eventID);
+                        startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.help:
-                        startActivity(new Intent(getApplicationContext()
-                                ,Help.class));
+                        intent = new Intent(getBaseContext(),Help.class);
+                        intent.putExtra("userID",userID);
+                        intent.putExtra("eventID",eventID);
+                        startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.about_us:
-                        startActivity(new Intent(getApplicationContext()
-                                ,About.class));
+                        intent = new Intent(getBaseContext(),About.class);
+                        intent.putExtra("userID",userID);
+                        intent.putExtra("eventID",eventID);
+                        startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.account:
-                        startActivity(new Intent(getApplicationContext()
-                                ,Account.class));
+                        intent = new Intent(getBaseContext(),Account.class);
+                        intent.putExtra("userID",userID);
+                        intent.putExtra("eventID",eventID);
+                        startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.events:

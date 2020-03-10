@@ -51,29 +51,39 @@ public class Confirmation extends AppCompatActivity {
         //set home selected
         bottomNavigationView.setSelectedItemId(R.id.events);
 
+
+
         //set button selected
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext()
-                                ,Home.class));
+                        Intent intent = new Intent(getBaseContext(),Home.class);
+                        intent.putExtra("userID",userID);
+                        intent.putExtra("eventID",eventID);
+                        startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.help:
-                        startActivity(new Intent(getApplicationContext()
-                                ,Help.class));
+                        intent = new Intent(getBaseContext(),Help.class);
+                        intent.putExtra("userID",userID);
+                        intent.putExtra("eventID",eventID);
+                        startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.about_us:
-                        startActivity(new Intent(getApplicationContext()
-                                ,About.class));
+                        intent = new Intent(getBaseContext(),About.class);
+                        intent.putExtra("userID",userID);
+                        intent.putExtra("eventID",eventID);
+                        startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.account:
-                        startActivity(new Intent(getApplicationContext()
-                                ,Account.class));
+                        intent = new Intent(getBaseContext(),Account.class);
+                        intent.putExtra("userID",userID);
+                        intent.putExtra("eventID",eventID);
+                        startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.events:
@@ -83,11 +93,11 @@ public class Confirmation extends AppCompatActivity {
                 return false;
             }
         });
-        final Bundle intent = getIntent().getExtras();
-        eventID = intent.getString("eventID");
-        userID = intent.getString("userID");
-        totalPriceStr = intent.getString("totalPrice");
-        quantity = intent.getString("ticketQuantity");
+        final Bundle intent2 = getIntent().getExtras();
+        eventID = intent2.getString("eventID");
+        userID = intent2.getString("userID");
+        totalPriceStr = intent2.getString("totalPrice");
+        quantity = intent2.getString("ticketQuantity");
         loadData();
 
     }

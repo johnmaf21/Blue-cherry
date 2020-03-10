@@ -21,6 +21,7 @@ public class Home extends AppCompatActivity {
 
     private ImageView topImage;
     private String userID;
+    private boolean firstTimeOnHome = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +42,12 @@ public class Home extends AppCompatActivity {
         button5 = findViewById(R.id.eventButton5);
         button6 = findViewById(R.id.eventButton6);
 
-        final Bundle intent = getIntent().getExtras();
-        userID = intent.getString("userID");
+        System.out.println(firstTimeOnHome);
+        if (firstTimeOnHome){
+            firstTimeOnHome = false;
+            final Bundle intent = getIntent().getExtras();
+            userID = intent.getString("userID");
+        }
 
         //Initialize the Buttons
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -58,18 +63,24 @@ public class Home extends AppCompatActivity {
                     case R.id.home:
                         return true;
                     case R.id.help:
-                        startActivity(new Intent(getApplicationContext()
-                                ,Help.class));
+                        Intent intent = new Intent(getBaseContext(),Help.class);
+                        intent.putExtra("userID",userID);
+                        intent.putExtra("eventID","1");
+                        startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.about_us:
-                        startActivity(new Intent(getApplicationContext()
-                                ,About.class));
+                        intent = new Intent(getBaseContext(),About.class);
+                        intent.putExtra("userID",userID);
+                        intent.putExtra("eventID","1");
+                        startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.account:
-                        startActivity(new Intent(getApplicationContext()
-                                ,Account.class));
+                        intent = new Intent(getBaseContext(),Account.class);
+                        intent.putExtra("userID",userID);
+                        intent.putExtra("eventID","1");
+                        startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
                 }
