@@ -117,15 +117,15 @@ public class Home extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//        button6.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(getBaseContext(), Events.class);
-//                intent.putExtra("eventID","6");
-//                intent.putExtra("userID",userID);
-//                startActivity(intent);
-//            }
-//        });
+        button6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), Events.class);
+                intent.putExtra("eventID","6");
+                intent.putExtra("userID",userID);
+                startActivity(intent);
+            }
+        });
 
     }
 }
