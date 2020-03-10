@@ -188,6 +188,7 @@ public class PaymentPage extends AppCompatActivity {
     }
 
     public void calcHighestOrderID(final String newHighestID){
+        highestID = 0;
         mCollRef2
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -207,12 +208,11 @@ public class PaymentPage extends AppCompatActivity {
                             order.put("paymentmethodid", newHighestID);
                             order.put("totalprice",totalPrice);
 
-                            final String newOrderID = String.valueOf(highestID);
+                            final String newOrderID = String.valueOf(highestID+1);
                             mCollRef2.document(newOrderID).set(order).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     System.out.println("successfully added a new order to the database");
-
                                 }
                             });
 
