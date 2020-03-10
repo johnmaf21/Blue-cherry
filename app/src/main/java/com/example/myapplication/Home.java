@@ -13,13 +13,12 @@ import android.widget.ImageView;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Home extends AppCompatActivity {
+    //Base buttons
+    private Button accountBtn, signoutBtn, faqBtn, aboutBtn;
 
-    private Button button1;
-    private Button button2;
-    private Button button3;
-    private Button button4;
-    private Button button5;
-    private Button button6;
+    //Event buttons
+    private Button button1, button2, button3, button4, button5, button6;
+
     private ImageView topImage;
     private String userID;
 
@@ -28,6 +27,13 @@ public class Home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Initialise base buttons
+        signoutBtn = findViewById(R.id.signoutButton);
+        faqBtn = findViewById(R.id.faqButton);
+        aboutBtn = findViewById(R.id.aboutButton);
+        accountBtn = findViewById(R.id.aboutButton);
+
+        //Initialise event buttons
         button1 = findViewById(R.id.eventButton1);
         button2 = findViewById(R.id.eventButton2);
         button3 = findViewById(R.id.eventButton3);
@@ -71,7 +77,40 @@ public class Home extends AppCompatActivity {
             }
         });
 
-        //Button function
+        //Button functions
+        signoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        faqBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), Help.class);
+                startActivity(intent);
+            }
+        });
+
+        aboutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), About.class);
+                startActivity(intent);
+            }
+        });
+
+        accountBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(), Account.class);
+                startActivity(intent);
+            }
+        });
+
+        //Event buttons
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

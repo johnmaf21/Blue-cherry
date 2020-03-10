@@ -53,14 +53,14 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="65dp"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/description"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Welcome to the Funbook App\nAll latest events will display below"
+                android:layout_height="wrap_content"
+                android:text="Welcome to the Funbook App"
                 android:textAlignment="center"
                 android:textSize="24sp" />
         </LinearLayout>
@@ -73,6 +73,48 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="146dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/faqButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="164dp"
+                        android:layout_weight="1"
+                        android:text="FAQ" />
+
+                    <Button
+                        android:id="@+id/accountButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="165dp"
+                        android:layout_weight="1"
+                        android:text="Account" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="149dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/aboutButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="About" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Latest Events"
+                    android:textSize="24sp" />
 
                 <Button
                     android:id="@+id/eventButton1"
@@ -113,4 +155,16 @@
         </ScrollView>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/signoutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:text="Signout"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.033" />
 </androidx.constraintlayout.widget.ConstraintLayout>
