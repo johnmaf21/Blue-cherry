@@ -3,6 +3,7 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -35,6 +36,7 @@ public class Confirmation extends AppCompatActivity {
     private TextView festivalName;
     private CollectionReference mCollRef = FirebaseFirestore.getInstance().collection("bc_Event");
     private CollectionReference mCollRef2 = FirebaseFirestore.getInstance().collection("bc_Location");
+    private String eventID, userID, quantity,totalPriceStr;
 
 
     @Override
@@ -44,6 +46,48 @@ public class Confirmation extends AppCompatActivity {
         BottomNavigationView navView = findViewById(R.id.bottom_navigation);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        //set home selected
+        bottomNavigationView.setSelectedItemId(R.id.events);
+
+        //set button selected
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case R.id.home:
+                        startActivity(new Intent(getApplicationContext()
+                                ,Home.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.help:
+                        startActivity(new Intent(getApplicationContext()
+                                ,Help.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.about_us:
+                        startActivity(new Intent(getApplicationContext()
+                                ,About.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.account:
+                        startActivity(new Intent(getApplicationContext()
+                                ,Account.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.events:
+                        return true;
+
+                }
+                return false;
+            }
+        });
+        final Bundle intent = getIntent().getExtras();
+        eventID = intent.getString("eventID");
+        userID = intent.getString("userID");
+        totalPriceStr = intent.getString("totalPrice");
+        quantity = intent.getString("ticketQuantity");
         loadData();
 
     }
@@ -56,11 +100,7 @@ public class Confirmation extends AppCompatActivity {
         totalPrice = (TextView) findViewById(R.id.total);
         festivalName = (TextView) findViewById(R.id.festivalName);
 
-        DocumentReference docRef = mCollRef.document("1");
-
-// Source can be CACHE, SERVER, or DEFAULT.
-        Source source = Source.CACHE;
-
+        DocumentReference docRef = mCollRef.document(eventID);
 
         // Get the document, forcing the SDK to use the offline cache
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
@@ -89,7 +129,7 @@ public class Confirmation extends AppCompatActivity {
                     date.setText(strDate);
 
 //                  time.setText(document.get("startTime").toString());
-                    totalPrice.setText("£" + document.get("eventprice").toString());
+                    totalPrice.setText("£" + totalPriceStr);
                     festivalName.setText(document.get("eventname").toString());
                     DocumentReference docRef2 = mCollRef2.document(document.get("eventlocationid").toString());
                     getLocation(docRef2);

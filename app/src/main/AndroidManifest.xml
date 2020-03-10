@@ -22,10 +22,10 @@
         <activity android:name=".Home" />
         <activity android:name=".Register" />
         <activity android:name=".SecondActivity" />
-        <activity android:name=".IntroSlider"></activity>
-        <activity android:name=".LoginActivity"></activity>
         <activity android:name=".PaymentPage"></activity>
-        <activity android:name=".Confirmation">
+        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".Confirmation"></activity>
+        <activity android:name=".IntroSlider">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

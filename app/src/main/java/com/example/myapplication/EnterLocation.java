@@ -114,8 +114,6 @@ public class EnterLocation extends AppCompatActivity {
                                 Log.w("DocSnippets", "Error writing document", e);
                             }
                         });
-
-
             }
         })
                 .addOnFailureListener(new OnFailureListener() {
@@ -140,8 +138,6 @@ public class EnterLocation extends AppCompatActivity {
                                 highestID += 1;
                             }
                             createAccount(address1String,address2String,address3String,cityString,countryString,countyString,postcodeString,intent);
-
-
                         }
                     }
                 });

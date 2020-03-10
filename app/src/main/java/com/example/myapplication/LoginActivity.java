@@ -50,7 +50,6 @@ public class LoginActivity extends AppCompatActivity {
                 }else{
                     Toast.makeText(LoginActivity.this, "Please enter an email and a password", Toast.LENGTH_SHORT).show();
                 }
-                System.out.println("h");
 
             }
         });
@@ -75,10 +74,12 @@ public class LoginActivity extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 System.out.println(document.getId()+" "+document.getData().toString());
                                 if (document.get("email").toString().equals(userName) && document.get("password").toString().equals(userPassword)){
-                                    Intent intent = new Intent(LoginActivity.this, Home.class);
+                                    Intent intent = new Intent(getBaseContext(), Home.class);
+                                    intent.putExtra("userID",document.getId());
                                     startActivity(intent);
                                 }
                             }
+                            Toast.makeText(LoginActivity.this, "Either email or password is incorrect. Try again", Toast.LENGTH_SHORT).show();
                         } else {
                             System.out.println("Error getting documents");
                         }

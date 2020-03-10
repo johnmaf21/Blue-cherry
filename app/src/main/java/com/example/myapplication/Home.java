@@ -21,26 +21,30 @@ public class Home extends AppCompatActivity {
     private Button button5;
     private Button button6;
     private ImageView topImage;
+    private String userID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        button1 = findViewById(R.id.eventButton1);
+        button2 = findViewById(R.id.eventButton2);
+        button3 = findViewById(R.id.eventButton3);
+        button4 = findViewById(R.id.eventButton4);
+        button5 = findViewById(R.id.eventButton5);
+        button6 = findViewById(R.id.eventButton6);
+
+        final Bundle intent = getIntent().getExtras();
+        userID = intent.getString("userID");
+
         //Initialize the Buttons
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-
-        Button button1 = findViewById(R.id.eventButton1);
-        Button button2 = findViewById(R.id.eventButton2);
-        Button button3 = findViewById(R.id.eventButton3);
-        Button button4 = findViewById(R.id.eventButton4);
-        Button button5 = findViewById(R.id.eventButton5);
-        Button button6 = findViewById(R.id.eventButton6);
 
         //set home selected
         bottomNavigationView.setSelectedItemId(R.id.home);
 
-        //set bottom bar selection
+        //set button selected
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -67,54 +71,61 @@ public class Home extends AppCompatActivity {
             }
         });
 
-        //set Firebase intent to allow passing data through home page to event page
-        final Intent intent = new Intent(Home.this, Events.class);
-
         //Button function
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent.putExtra("london1","valueLondon1");
-                Intent intent = new Intent(Home.this, Events.class);
+                Intent intent = new Intent(getBaseContext(), Events.class);
+                intent.putExtra("eventID","1");
+                intent.putExtra("userID",userID);
                 startActivity(intent);
             }
         });
         button2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                intent.putExtra("london2","valueLondon2");
-                Intent intent = new Intent(Home.this, Events.class);
+                Intent intent = new Intent(getBaseContext(), Events.class);
+                intent.putExtra("eventID","2");
+                intent.putExtra("userID",userID);
                 startActivity(intent);
             }
         });
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Home.this, Events.class);
+                Intent intent = new Intent(getBaseContext(), Events.class);
+                intent.putExtra("eventID","3");
+                intent.putExtra("userID",userID);
                 startActivity(intent);
             }
         });
         button4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Home.this, Events.class);
+                Intent intent = new Intent(getBaseContext(), Events.class);
+                intent.putExtra("eventID","4");
+                intent.putExtra("userID",userID);
                 startActivity(intent);
             }
         });
         button5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Home.this, Events.class);
+                Intent intent = new Intent(getBaseContext(), Events.class);
+                intent.putExtra("eventID","5");
+                intent.putExtra("userID",userID);
                 startActivity(intent);
             }
         });
-        button6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Home.this, Events.class);
-                startActivity(intent);
-            }
-        });
+//        button6.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getBaseContext(), Events.class);
+//                intent.putExtra("eventID","6");
+//                intent.putExtra("userID",userID);
+//                startActivity(intent);
+//            }
+//        });
 
     }
 }
