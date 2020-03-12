@@ -169,6 +169,7 @@ public class Events extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getBaseContext(),Home.class);
                 intent.putExtra("userID",userID);
+                intent.putExtra("eventID",eventID);
                 startActivity(intent);
             }
         });

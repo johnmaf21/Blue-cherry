@@ -19,12 +19,17 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class Account extends AppCompatActivity {
 
     private int instruction;
     private String eventID;
     private String userID;
+    private String locationID;
     private TextView firstName;
     private TextView lastName;
     private TextView phoneNum;
@@ -45,6 +50,11 @@ public class Account extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
+
+        final Bundle intent2 = getIntent().getExtras();
+        eventID = intent2.getString("eventID");
+        userID = intent2.getString("userID");
+
 
         //Initialize the NavBar
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -104,6 +114,12 @@ public class Account extends AppCompatActivity {
         changeEmail = findViewById(R.id.accEmailButton);
         changePhone = findViewById(R.id.accPhoneButton);
         changePassword = findViewById(R.id.accPasswordButton);
+        editText1 = findViewById(R.id.accEditText1);
+        editText2 = findViewById(R.id.accEditText2);
+        cancel = findViewById(R.id.accCancelButton);
+        accept = findViewById(R.id.accAcceptButton);
+
+        hideComponents();
 
         DocumentReference docRef = mCollRef.document(userID);
         // Get the document, forcing the SDK to use the offline cache
@@ -117,6 +133,7 @@ public class Account extends AppCompatActivity {
                     lastName.setText(document.get("secondname").toString());
                     phoneNum.setText(document.get("phoneno").toString());
                     emailAddress.setText(document.get("email").toString());
+                    locationID = document.get("userlocationid").toString();
 
                 }
             }
@@ -126,17 +143,12 @@ public class Account extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 instruction = 1;
-                editText1 = findViewById(R.id.accEditText1);
-                editText2 = findViewById(R.id.accEditText2);
-                cancel = findViewById(R.id.accCancelButton);
-                accept = findViewById(R.id.accAcceptButton);
                 editText1.setText("New password");
                 editText2.setText("Confirm new password");
                 editText1.setVisibility(View.VISIBLE);
                 editText2.setVisibility(View.VISIBLE);
                 accept.setVisibility(View.VISIBLE);
                 cancel.setVisibility(View.VISIBLE);
-
                 editText1.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
                 editText2.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
             }});
@@ -146,10 +158,6 @@ public class Account extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 instruction = 2;
-                editText1 = findViewById(R.id.accEditText1);
-                editText2 = findViewById(R.id.accEditText2);
-                cancel = findViewById(R.id.accCancelButton);
-                accept = findViewById(R.id.accAcceptButton);
                 editText1.setText("New phone number");
                 editText2.setText("Confirm new phone number");
                 editText1.setVisibility(View.VISIBLE);
@@ -163,10 +171,6 @@ public class Account extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 instruction = 3;
-                editText1 = findViewById(R.id.accEditText1);
-                editText2 = findViewById(R.id.accEditText2);
-                cancel = findViewById(R.id.accCancelButton);
-                accept = findViewById(R.id.accAcceptButton);
                 editText1.setText("New email address");
                 editText2.setText("Confirm new email");
                 editText1.setVisibility(View.VISIBLE);
@@ -179,22 +183,26 @@ public class Account extends AppCompatActivity {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editText1.setVisibility(View.INVISIBLE);
-                editText2.setVisibility(View.INVISIBLE);
-                accept.setVisibility(View.INVISIBLE);
-                cancel.setVisibility(View.INVISIBLE);
+                hideComponents();
             }});
 
         accept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (editText1.getText() == editText2.getText()) {
+                Map<String, Object> edit = new HashMap<>();
+                if (editText1.getText().toString().equals(editText2.getText().toString())) {
                     if (instruction == 1) {
-                        mCollRef.document("password").set(editText2.getText());
+                        edit.put("password",editText1.getText().toString());
+                        mCollRef.document(userID).set(edit, SetOptions.merge());
+                        hideComponents();
                     } else if (instruction == 2){
-                        mCollRef.document("phoneno").set(editText2.getText());
+                        edit.put("phoneno",editText2.getText().toString());
+                        mCollRef.document(userID).set(edit,SetOptions.merge());
+                        hideComponents();
                     }else if (instruction == 3){
-                        mCollRef.document("email").set(editText2.getText());
+                        edit.put("email",editText2.getText().toString());
+                        mCollRef.document(userID).set(edit,SetOptions.merge());
+                        hideComponents();
                     }
                 }else {
                     System.out.println("incorrect input");
@@ -202,8 +210,15 @@ public class Account extends AppCompatActivity {
                 }
             }});
 
-        final Bundle intent2 = getIntent().getExtras();
-        eventID = intent2.getString("eventID");
-        userID = intent2.getString("userID");
+    }
+
+    public void hideComponents(){
+        editText1.setVisibility(View.INVISIBLE);
+        editText2.setVisibility(View.INVISIBLE);
+        accept.setVisibility(View.INVISIBLE);
+        cancel.setVisibility(View.INVISIBLE);
+    }
+    public void showComponents(){
+
     }
 }
