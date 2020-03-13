@@ -30,11 +30,11 @@ import java.util.Map;
 
 public class PaymentPage extends AppCompatActivity {
 
-    private EditText name, cardNo, cvc, expiry;
-    private TextView textWrongInput;
+    private EditText cardNo, cvc, expiry;
     private Button confirm, back;
     private int checkAll;
     private int highestID;
+    private TextView total;
     private CollectionReference mCollRef= FirebaseFirestore.getInstance().collection("bc_Card");
     private CollectionReference mCollRef2= FirebaseFirestore.getInstance().collection("bc_Order");
     private String userID, eventID, totalPrice,quantity;
@@ -95,15 +95,15 @@ public class PaymentPage extends AppCompatActivity {
 
         //Initialise xml ID/variables
         //Edit Text
-        name = (EditText) findViewById(R.id.payEditTextName);
         cardNo = (EditText) findViewById(R.id.payEditTextCard);
         cvc = (EditText) findViewById(R.id.payEditTextCVC);
         expiry = (EditText) findViewById(R.id.payEditTextExpiry);
         //Text View
-        textWrongInput = (TextView) findViewById(R.id.payTextViewWrong);
         //Buttons
         confirm = (Button) findViewById(R.id.payBtnConfirm);
         back = (Button) findViewById(R.id.payBtnBack);
+        total = (TextView) findViewById(R.id.totalView);
+        total.setText("£"+totalPrice);
 
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,10 +114,11 @@ public class PaymentPage extends AppCompatActivity {
                     intent.putExtra("userID",userID);
                     intent.putExtra("eventID",eventID);
                     intent.putExtra("totalPrice",totalPrice);
+                    intent.putExtra("ticketQuantity",quantity);
                     startActivity(intent);
                 }
                 else{
-                    textWrongInput.setText("Invalid card information");
+                    Toast.makeText(PaymentPage.this, "Please enter the correct information",Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -126,6 +127,8 @@ public class PaymentPage extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                     Intent intent = new Intent(PaymentPage.this, Events.class);
+                    intent.putExtra("userID",userID);
+                    intent.putExtra("eventID",eventID);
                     startActivity(intent);
             }
         });

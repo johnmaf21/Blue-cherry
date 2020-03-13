@@ -204,7 +204,7 @@
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/montserrat"
         android:text="Create Account"
-        android:textColor="#003152"
+        android:textColor="#024174"
         android:textSize="36dp"
         app:fontFamily="@font/montserrat"
         app:layout_constraintBottom_toBottomOf="parent"

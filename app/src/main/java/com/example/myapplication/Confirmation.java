@@ -31,9 +31,9 @@ public class Confirmation extends AppCompatActivity {
 
     private TextView address;
     private TextView date;
-    private TextView time;
     private TextView totalPrice;
     private TextView festivalName;
+    private TextView quantityTV;
     private CollectionReference mCollRef = FirebaseFirestore.getInstance().collection("bc_Event");
     private CollectionReference mCollRef2 = FirebaseFirestore.getInstance().collection("bc_Location");
     private String eventID, userID, quantity,totalPriceStr;
@@ -106,9 +106,9 @@ public class Confirmation extends AppCompatActivity {
 
         address = (TextView) findViewById(R.id.address);
         date = (TextView) findViewById(R.id.date);
-        time = (TextView) findViewById(R.id.time);
         totalPrice = (TextView) findViewById(R.id.total);
         festivalName = (TextView) findViewById(R.id.festivalName);
+        quantityTV = (TextView) findViewById(R.id.numOfTickets);
 
         DocumentReference docRef = mCollRef.document(eventID);
 
@@ -134,9 +134,9 @@ public class Confirmation extends AppCompatActivity {
                     Timestamp endTime = (Timestamp) document.get("endtime");
                     Date otherDate = endTime.toDate();
                     String strEndTime = (new SimpleDateFormat("HHmm")).format(otherDate);
-                    time.setText(startTime+" till "+strEndTime);
+                    quantityTV.setText(quantity);
 
-                    date.setText(strDate);
+                    date.setText(strDate+"\n"+startTime+" till "+strEndTime);
 
 //                  time.setText(document.get("startTime").toString());
                     totalPrice.setText("£" + totalPriceStr);

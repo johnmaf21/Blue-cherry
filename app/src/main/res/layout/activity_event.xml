@@ -166,14 +166,14 @@
         android:textStyle="bold" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bottom_navigation"
-        app:itemBackground="@color/colorPrimary"
-        app:itemTextColor="@drawable/selector"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/navigationBackground"
         app:itemIconTint="@drawable/selector"
-        app:menu="@menu/menu_navigation"
-        android:layout_alignParentBottom="true"/>
+        app:itemTextColor="@drawable/selector"
+        app:menu="@menu/menu_navigation" />
 
     <TextView
         android:id="@+id/festivalName"
@@ -205,13 +205,15 @@
 
     <Button
         android:id="@+id/buyBttn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="86dp"
+        android:layout_height="43dp"
         android:layout_above="@+id/bottom_navigation"
         android:layout_marginLeft="300dp"
         android:layout_marginTop="610dp"
         android:layout_marginBottom="18dp"
-        android:text="NEXT" />
+        android:background="#FFFFE0"
+        android:text="NEXT"
+        android:textColor="#024174" />
 
     <TextView
         android:id="@+id/eventDescriptionTV"

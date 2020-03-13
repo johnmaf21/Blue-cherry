@@ -3,7 +3,8 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="navigationBackground">#103888</color>
-    <color name="icon">#DFA924</color>
+    <color name="navigationBackground">#024174</color>
+    <color name="icon">#ffffe0</color>
     <color name="pageBackground">#EDEFF3</color>
+    <color name="colorOn">#FFCC00</color>
 </resources>

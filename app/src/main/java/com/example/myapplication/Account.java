@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -143,8 +144,8 @@ public class Account extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 instruction = 1;
-                editText1.setText("New password");
-                editText2.setText("Confirm new password");
+                editText1.setHint("New password");
+                editText2.setHint("Confirm new password");
                 editText1.setVisibility(View.VISIBLE);
                 editText2.setVisibility(View.VISIBLE);
                 accept.setVisibility(View.VISIBLE);
@@ -158,8 +159,8 @@ public class Account extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 instruction = 2;
-                editText1.setText("New phone number");
-                editText2.setText("Confirm new phone number");
+                editText1.setHint("New phone number");
+                editText2.setHint("Confirm new phone number");
                 editText1.setVisibility(View.VISIBLE);
                 editText2.setVisibility(View.VISIBLE);
                 accept.setVisibility(View.VISIBLE);
@@ -171,8 +172,8 @@ public class Account extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 instruction = 3;
-                editText1.setText("New email address");
-                editText2.setText("Confirm new email");
+                editText1.setHint("New email address");
+                editText2.setHint("Confirm new email");
                 editText1.setVisibility(View.VISIBLE);
                 editText2.setVisibility(View.VISIBLE);
                 accept.setVisibility(View.VISIBLE);
@@ -191,15 +192,17 @@ public class Account extends AppCompatActivity {
             public void onClick(View v) {
                 Map<String, Object> edit = new HashMap<>();
                 if (editText1.getText().toString().equals(editText2.getText().toString())) {
-                    if (instruction == 1) {
+                    if (instruction == 1 && isSame()) {
                         edit.put("password",editText1.getText().toString());
                         mCollRef.document(userID).set(edit, SetOptions.merge());
                         hideComponents();
-                    } else if (instruction == 2){
+                    } else if (instruction == 2 && isSame()){
+                        phoneNum.setText(editText2.getText().toString());
                         edit.put("phoneno",editText2.getText().toString());
                         mCollRef.document(userID).set(edit,SetOptions.merge());
                         hideComponents();
-                    }else if (instruction == 3){
+                    }else if (instruction == 3 && isSame()){
+                        emailAddress.setText(editText2.getText().toString());
                         edit.put("email",editText2.getText().toString());
                         mCollRef.document(userID).set(edit,SetOptions.merge());
                         hideComponents();
@@ -218,7 +221,16 @@ public class Account extends AppCompatActivity {
         accept.setVisibility(View.INVISIBLE);
         cancel.setVisibility(View.INVISIBLE);
     }
-    public void showComponents(){
-
+    public boolean isSame(){
+        if ((!editText1.getText().toString().isEmpty())&&(!editText2.getText().toString().isEmpty())){
+            if(editText1.getText().toString().equals(editText2.getText().toString())){
+                return true;
+            }else{
+                Toast.makeText(Account.this,"Box 1 needs to be the same as box 2",Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(Account.this,"Please fill in both boxes",Toast.LENGTH_SHORT).show();
+        }
+        return false;
     }
 }
