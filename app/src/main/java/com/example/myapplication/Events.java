@@ -23,10 +23,13 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.firestore.Source;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Events extends AppCompatActivity {
     private TextView eventNameTV;
@@ -43,6 +46,7 @@ public class Events extends AppCompatActivity {
     private String eventID;
     private String userID;
     private Button backBtt;
+    private int originalAvailibility;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,7 +113,9 @@ public class Events extends AppCompatActivity {
                 if (quantityET.getText().toString().equals("0")|| quantityET.getText() == null){
                     Toast.makeText(Events.this, "Quantity must be a whole number bigger than 0", Toast.LENGTH_SHORT).show();
                 }else{
-                    System.out.println("do something 2");
+                    Map<String, Object> edit = new HashMap<>();
+                    edit.put("ticketsavailable",ticketsAvailableTV.getText().toString());
+                    mCollRef.document(userID).set(edit, SetOptions.merge());
                     Intent intent = new Intent(getBaseContext(), PaymentPage.class);
                     intent.putExtra("totalPrice",(totalPrice.getText().toString()).substring(1));
                     intent.putExtra("userID",userID);
@@ -135,32 +141,32 @@ public class Events extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
-//                if(quantityET.getText().toString().matches("[0-9]+")){
+                if(quantityET.getText().toString().matches("[0-9]+")){
                 System.out.println(quantityET.getText().toString());
                 System.out.println(ticketsAvailableTV.getText().toString());
                     if((Integer.parseInt(quantityET.getText().toString())<=Integer.parseInt(ticketsAvailableTV.getText().toString())) || (Integer.parseInt(quantityET.getText().toString())<11)){
 
-
                         if(quantityET.getText().toString().equals("0")|| quantityET.getText() == null){
                             totalPrice.setText("£0.00");
+                            ticketsAvailableTV.setText(String.valueOf(originalAvailibility));
                         }else{
                             double originalPrice =Double.parseDouble(priceTV.getText().toString().substring(1));
                             int quantity = Integer.parseInt(quantityET.getText().toString());
                             String finalPrice = String.valueOf((originalPrice*quantity)+0.30);
                             totalPrice.setText("£"+finalPrice);
+                            ticketsAvailableTV.setText(String.valueOf(originalAvailibility-quantity));
                         }
                     }else{
                         Toast.makeText(Events.this, "You cannot buy more than 10 tickets at once and you can't buy more tickets than the venue capacity", Toast.LENGTH_SHORT).show();
                         totalPrice.setText("£0.00");
-                        quantityET.setText("0");
+                        ticketsAvailableTV.setText(String.valueOf(originalAvailibility));
                     }
 
-//                }else{
-//                    Toast.makeText(Events.this, "Quantity must be a whole number bigger than 0", Toast.LENGTH_SHORT).show();
-//                    totalPrice.setText("£0.00");
-//                    quantityET.setText("0");
-//
-//                }
+                }else{
+                    Toast.makeText(Events.this, "Quantity must be a whole number bigger than 0", Toast.LENGTH_SHORT).show();
+                    totalPrice.setText("£0.00");
+                    ticketsAvailableTV.setText(String.valueOf(originalAvailibility));
+                }
             }
         });
 
@@ -186,7 +192,7 @@ public class Events extends AppCompatActivity {
         totalPrice = findViewById(R.id.totalTV2);
         backBtt = findViewById(R.id.eventBackBttn);
         buyButton = findViewById(R.id.buyBttn);
-//        eventDescription = findViewById(R.id.eventDescriptionTV);
+        eventDescription = findViewById(R.id.eventDescriptionTV);
 
         DocumentReference docRef = mCollRef.document(eventID);
 
@@ -215,6 +221,8 @@ public class Events extends AppCompatActivity {
                     eventNameTV.setText(document.get("eventname").toString());
 
                     ticketsAvailableTV.setText(document.get("ticketsavailable").toString());
+                    originalAvailibility = Integer.parseInt(document.get("ticketsavailable").toString());
+                    eventDescription.setText(document.get("eventdescription").toString());
                     DocumentReference docRef2 = mCollRef2.document(document.get("eventlocationid").toString());
                     getLocation(docRef2);
                 }

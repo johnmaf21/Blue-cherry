@@ -24,6 +24,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText password;
     private Button login;
     private Button forgotPassword;
+    private Button register;
     private SessionManager session;
     private CollectionReference mCollRef= FirebaseFirestore.getInstance().collection("bc_Users");
 
@@ -36,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.password);
         login = (Button) findViewById(R.id.btnLogin);
         forgotPassword = (Button) findViewById(R.id.openForgotPasswordPage);
+        register = (Button) findViewById(R.id.openRegister);
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
                 String passwordText = password.getText().toString();
                 if (!emailText.isEmpty() && !passwordText.isEmpty()){
                     validate(emailText,passwordText);
-
+                    Toast.makeText(LoginActivity.this, "Either email or password is incorrect. Try again", Toast.LENGTH_SHORT).show();
 
                 }else{
                     Toast.makeText(LoginActivity.this, "Please enter an email and a password", Toast.LENGTH_SHORT).show();
@@ -58,6 +60,14 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, ForgotPassword.class);
+                startActivity(intent);
+            }
+        });
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, Register.class);
                 startActivity(intent);
             }
         });
@@ -79,7 +89,6 @@ public class LoginActivity extends AppCompatActivity {
                                     startActivity(intent);
                                 }
                             }
-                            Toast.makeText(LoginActivity.this, "Either email or password is incorrect. Try again", Toast.LENGTH_SHORT).show();
                         } else {
                             System.out.println("Error getting documents");
                         }

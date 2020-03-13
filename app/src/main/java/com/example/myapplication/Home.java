@@ -62,8 +62,15 @@ public class Home extends AppCompatActivity {
                 switch (menuItem.getItemId()){
                     case R.id.home:
                         return true;
+                    case R.id.events:
+                        Intent intent = new Intent(getBaseContext(),Events.class);
+                        intent.putExtra("userID",userID);
+                        intent.putExtra("eventID","1");
+                        startActivity(intent);
+                        overridePendingTransition(0,0);
+                        return true;
                     case R.id.help:
-                        Intent intent = new Intent(getBaseContext(),Help.class);
+                        intent = new Intent(getBaseContext(),Help.class);
                         intent.putExtra("userID",userID);
                         intent.putExtra("eventID","1");
                         startActivity(intent);
@@ -83,6 +90,7 @@ public class Home extends AppCompatActivity {
                         startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
+
                 }
                 return false;
             }
@@ -101,6 +109,8 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getBaseContext(), Help.class);
+                intent.putExtra("userID",userID);
+                intent.putExtra("eventID","1");
                 startActivity(intent);
             }
         });
@@ -109,6 +119,8 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getBaseContext(), About.class);
+                intent.putExtra("userID",userID);
+                intent.putExtra("eventID","1");
                 startActivity(intent);
             }
         });
@@ -117,6 +129,8 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getBaseContext(), Account.class);
+                intent.putExtra("userID",userID);
+                intent.putExtra("eventID","1");
                 startActivity(intent);
             }
         });

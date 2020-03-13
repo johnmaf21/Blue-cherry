@@ -58,25 +58,36 @@ public class PaymentPage extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext()
-                                ,Home.class));
+                        Intent intent = new Intent(getBaseContext(),Home.class);
+                        intent.putExtra("userID",userID);
+                        intent.putExtra("eventID",eventID);
+                        startActivity(intent);
+                        overridePendingTransition(0,0);
                         return true;
                     case R.id.help:
-                        startActivity(new Intent(getApplicationContext()
-                                ,Help.class));
+                        intent = new Intent(getBaseContext(),Help.class);
+                        intent.putExtra("userID",userID);
+                        intent.putExtra("eventID",eventID);
+                        startActivity(intent);
                         overridePendingTransition(0,0);
-                        System.out.println("help working");
                         return true;
                     case R.id.about_us:
-                        startActivity(new Intent(getApplicationContext()
-                                ,About.class));
+                        intent = new Intent(getBaseContext(),About.class);
+                        intent.putExtra("userID",userID);
+                        intent.putExtra("eventID",eventID);
+                        startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.account:
-                        startActivity(new Intent(getApplicationContext()
-                                ,Account.class));
+                        intent = new Intent(getBaseContext(),Account.class);
+                        intent.putExtra("userID",userID);
+                        intent.putExtra("eventID",eventID);
+                        startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
+                    case R.id.events:
+                        return true;
+
                 }
                 return false;
             }
@@ -158,7 +169,7 @@ public class PaymentPage extends AppCompatActivity {
         payment.put("cardnumber",cardNo.getText().toString());
         payment.put("cvv",cvv.getText().toString());
         payment.put("expirydate",expiry.getText().toString());
-        final String newHighestID = String.valueOf(highestID+1);
+        final String newHighestID = String.valueOf(highestID);
 
         mCollRef.document(newHighestID).set(payment).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
@@ -177,9 +188,7 @@ public class PaymentPage extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                highestID += 1;
-                            }
+                            highestID = task.getResult().size()+1;
                             addOrderToDatabase(cardNo,cvv,expiry);
 
                         }
@@ -195,9 +204,7 @@ public class PaymentPage extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                highestID += 1;
-                            }
+                            highestID = task.getResult().size()+1;
                             Map<String, Object> order = new HashMap<>();
                             order.put("addtionalfee","0.30");
                             Date newDate = new Date();
@@ -208,7 +215,7 @@ public class PaymentPage extends AppCompatActivity {
                             order.put("paymentmethodid", newHighestID);
                             order.put("totalprice",totalPrice);
 
-                            final String newOrderID = String.valueOf(highestID+1);
+                            final String newOrderID = String.valueOf(highestID);
                             mCollRef2.document(newOrderID).set(order).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {

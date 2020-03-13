@@ -159,7 +159,6 @@ public class Confirmation extends AppCompatActivity {
                 if (task.isSuccessful()){
                     final DocumentSnapshot document = task.getResult();
                     address.setText(document.get("firstaddressline").toString() +", "+document.get("secondaddressline").toString()+ ", "+ document.get("city").toString()+", "+ document.get("country").toString()+", "+ document.get("postcode").toString());
-
                 }else{
 
                 }

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -25,6 +26,7 @@ import java.util.Map;
 
 public class EnterLocation extends AppCompatActivity {
     private Button register;
+    private Button back;
     private EditText address1TF;
     private EditText address2TF;
     private EditText address3TF;
@@ -49,6 +51,7 @@ public class EnterLocation extends AppCompatActivity {
         countryTF = (EditText) findViewById(R.id.countryTF);
         countyTF = (EditText) findViewById(R.id.countyTF);
         postcodeTF = (EditText) findViewById(R.id.postcodeTF);
+        back = (Button) findViewById(R.id.eventBackBttn2);
         final Bundle intent = getIntent().getExtras();
         String[] names = intent.getString("name").split("\\s+");
         System.out.println(Arrays.toString(names)+" | "+intent.getString("email")+" | "+intent.getString("phoneNum")+" | "+intent.getString("password"));
@@ -57,16 +60,26 @@ public class EnterLocation extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if(isCompulsoryComplete()){
+                    String address1 = address1TF.getText().toString();
+                    String address2 = ((address2TF.getText().toString().equals("") || address2TF.getText().toString() == null) ? null : address2TF.getText().toString());
+                    String address3 = ((address3TF.getText().toString().equals("") || address3TF.getText().toString() == null) ? null : address3TF.getText().toString());
+                    String city = cityTF.getText().toString();
+                    String country = countryTF.getText().toString();
+                    String county = ((countyTF.getText().toString().equals("") || countyTF.getText().toString() == null) ? null : countyTF.getText().toString());
+                    String postcode = postcodeTF.getText().toString();
+                    calcHighestID(address1,address2,address3,city,country,county,postcode,intent);
+                }
 
-                String address1 = address1TF.getText().toString();
-                String address2 = ((address2TF.getText().toString().equals("") || address2TF.getText().toString() == null) ? null : address2TF.getText().toString());
-                String address3 = ((address3TF.getText().toString().equals("") || address3TF.getText().toString() == null) ? null : address3TF.getText().toString());
-                String city = cityTF.getText().toString();
-                String country = ((countryTF.getText().toString().equals("") || countryTF.getText().toString() == null) ? null : countryTF.getText().toString());
-                String county = ((countyTF.getText().toString().equals("") || countyTF.getText().toString() == null) ? null : countyTF.getText().toString());
-                String postcode = postcodeTF.getText().toString();
-                calcHighestID(address1,address2,address3,city,country,county,postcode,intent);
 
+            }
+        });
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(EnterLocation.this, Register.class);
+                startActivity(intent);
             }
         });
     }
@@ -81,7 +94,7 @@ public class EnterLocation extends AppCompatActivity {
         userLocation.put("thirdaddressline", address3String);
         userLocation.put("postcode", postcodeString);
 
-        final String locationID = String.valueOf(getHighestID()+1);
+        final String locationID = String.valueOf(getHighestID());
         System.out.println(locationID);
 
         mCollRef.document(locationID).set(userLocation).addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -90,6 +103,7 @@ public class EnterLocation extends AppCompatActivity {
                 Log.d("DocSnippets", "User Location Document successfully written!");
                 String[] names = intent.getString("name").split("\\s+");
                 System.out.println(Arrays.toString(names)+" "+intent.getString("email")+" "+intent.getString("phoneNum")+" "+intent.getString("password"));
+
 
                 Map<String, Object> account = new HashMap<>();
                 account.put("firstname", names[0]);
@@ -134,18 +148,30 @@ public class EnterLocation extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                highestID += 1;
-                            }
+                            highestID = task.getResult().size()+1;
                             createAccount(address1String,address2String,address3String,cityString,countryString,countyString,postcodeString,intent);
                         }
                     }
                 });
     }
-    public void setHighestID(int highestID){
-        this.highestID = highestID;
-    }
     public int getHighestID(){
         return highestID;
+    }
+
+    public boolean isCompulsoryComplete(){
+        if(address1TF.getText().toString().isEmpty()){
+            Toast.makeText(EnterLocation.this, "Please enter the first line of your address", Toast.LENGTH_SHORT).show();
+            return false;
+        }else if(cityTF.getText().toString().isEmpty()){
+            Toast.makeText(EnterLocation.this, "Please enter the city for your address", Toast.LENGTH_SHORT).show();
+            return false;
+        }else if(countryTF.getText().toString().isEmpty()){
+            Toast.makeText(EnterLocation.this, "Please enter the country of your address", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if(postcodeTF.getText().toString().isEmpty()){
+            Toast.makeText(EnterLocation.this, "Please enter the postcode of your address", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        return true;
     }
 }
