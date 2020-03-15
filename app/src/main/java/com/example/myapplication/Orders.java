@@ -17,12 +17,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.api.Distribution;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Orders extends AppCompatActivity {
@@ -116,10 +119,24 @@ public class Orders extends AppCompatActivity {
                     for (final QueryDocumentSnapshot document : task.getResult()) {
                         System.out.println(document.getId()+" "+document.getData().toString());
                         if(document.get("userid").toString().equals(userID)){
+                            Timestamp times = (Timestamp) document.get("dateofpurchase");
+                            Date dates = times.toDate();
+
+                            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                            String strDate = sdf.format(dates);
                             Button newButton = new Button(Orders.this);
-                            newButton.setText("Ticket id: "+document.getId());
+                            System.out.println(ordersList.getWidth());
+                            System.out.println(ordersList.getHeight());
+                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                                    ordersList.getWidth(),
+                                    LinearLayout.LayoutParams.WRAP_CONTENT
+                            );
+                            params.setMargins(0,0,0,8);
+                            newButton.setLayoutParams(params);
+                            newButton.setText("Ticket ID: "+document.getId()+ "\n\nPurchased: "+strDate);
                             newButton.setTextColor(Color.parseColor("#024174"));
                             newButton.setTextAppearance(R.font.montserrat);
+                            newButton.setAllCaps(false);
                             newButton.setBackgroundColor(Color.parseColor("#FFFFE0"));
                             newButton.setId(Integer.parseInt(document.getId()));
                             newButton.setOnClickListener(new View.OnClickListener() {
