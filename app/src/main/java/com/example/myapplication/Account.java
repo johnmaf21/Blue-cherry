@@ -42,6 +42,7 @@ public class Account extends AppCompatActivity {
     private Button changePassword;
     private Button changeEmail;
     private Button changePhone;
+    private Button openOrders;
     private CollectionReference mCollRef = FirebaseFirestore.getInstance().collection("bc_Users");
 
 
@@ -119,6 +120,7 @@ public class Account extends AppCompatActivity {
         editText2 = findViewById(R.id.accEditText2);
         cancel = findViewById(R.id.accCancelButton);
         accept = findViewById(R.id.accAcceptButton);
+        openOrders = findViewById(R.id.viewOrders);
 
         hideComponents();
 
@@ -212,6 +214,16 @@ public class Account extends AppCompatActivity {
                     Error error = new Error("incorrect input");
                 }
             }});
+
+        openOrders.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getBaseContext(),Orders.class);
+                intent.putExtra("userID",userID);
+                intent.putExtra("eventID",eventID);
+                startActivity(intent);
+            }
+        });
 
     }
 

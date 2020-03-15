@@ -4,15 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Events">
+    tools:context=".Orders">
 
     <TextView
         android:id="@+id/numOfTickets"
-        android:layout_width="41dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="185dp"
+        android:layout_marginEnd="165dp"
         android:layout_marginBottom="215dp"
         android:fontFamily="@font/montserrat"
         android:text="2"
@@ -24,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="38dp"
         android:layout_marginBottom="216dp"
         android:fontFamily="@font/montserrat"
         android:text="Number of tickets:"
@@ -218,6 +220,16 @@
         android:adjustViewBounds="true"
         android:contentDescription="@string/todo"
         app:srcCompat="@drawable/coachella" />
+
+    <Button
+        android:id="@+id/ticketBackButton"
+        android:layout_width="40dp"
+        android:layout_height="37dp"
+        android:layout_alignTop="@+id/congrats"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="-60dp"
+        android:background="?attr/homeAsUpIndicator" />
 
 
 </RelativeLayout>

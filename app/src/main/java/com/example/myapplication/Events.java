@@ -215,8 +215,7 @@ public class Events extends AppCompatActivity {
                     // Document found in the offline cache
                     final DocumentSnapshot document = task.getResult();
                     Log.d("Caching", "Cached document data: " + document.getData());
-//                  address.setText(document.get("firstlineaddress").toString());
-                    //eventDescription.setText(document.get("eventdescription").toString());
+
                     Timestamp times = (Timestamp) document.get("starttime");
                     Date dates = times.toDate();
                     SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy");
@@ -226,6 +225,7 @@ public class Events extends AppCompatActivity {
                     Timestamp endTime = (Timestamp) document.get("endtime");
                     Date otherDate = endTime.toDate();
                     String strEndTime = (new SimpleDateFormat("HHmm")).format(otherDate);
+
                     dateTimeTV.setText(strDate+"\n"+startTime+" to "+strEndTime);
 
                     priceTV.setText("£" + document.get("eventprice").toString());
@@ -234,6 +234,7 @@ public class Events extends AppCompatActivity {
                     ticketsAvailableTV.setText(document.get("ticketsavailable").toString());
                     originalAvailibility = Integer.parseInt(document.get("ticketsavailable").toString());
                     eventDescription.setText(document.get("eventdescription").toString());
+
                     DocumentReference docRef2 = mCollRef2.document(document.get("eventlocationid").toString());
                     getLocation(docRef2);
                 }
