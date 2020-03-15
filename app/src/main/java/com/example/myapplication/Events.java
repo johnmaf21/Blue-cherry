@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -12,10 +13,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.Timestamp;
@@ -25,7 +30,10 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.firestore.Source;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -43,6 +51,8 @@ public class Events extends AppCompatActivity {
     private TextView totalPrice;
     private CollectionReference mCollRef= FirebaseFirestore.getInstance().collection("bc_Event");
     private CollectionReference mCollRef2 = FirebaseFirestore.getInstance().collection("bc_Location");
+    private FirebaseStorage storage = FirebaseStorage.getInstance();
+    private ImageView eventImage;
     private String eventID;
     private String userID;
     private Button backBtt;
@@ -54,6 +64,7 @@ public class Events extends AppCompatActivity {
         setContentView(R.layout.activity_event);
 
         buyButton = findViewById(R.id.buyBttn);
+        eventImage = findViewById(R.id.imageView12);
 
         //Initialize the Buttons
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -105,12 +116,13 @@ public class Events extends AppCompatActivity {
         eventID = intent.getString("eventID");
         userID = intent.getString("userID");
         loadData();
+        loadPic();
 
         buyButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 System.out.println("do something 1");
-                if (quantityET.getText().toString().equals("0")|| quantityET.getText() == null){
+                if (quantityET.getText().toString().equals("0") || quantityET.getText().toString().equals("")||!(quantityET.getText().toString().matches("[0-9]+"))){
                     Toast.makeText(Events.this, "Quantity must be a whole number bigger than 0", Toast.LENGTH_SHORT).show();
                 }else{
                     Map<String, Object> edit = new HashMap<>();
@@ -123,7 +135,6 @@ public class Events extends AppCompatActivity {
                     intent.putExtra("ticketQuantity", quantityET.getText().toString());
                     startActivity(intent);
                 }
-
 
             }
         });
@@ -249,5 +260,46 @@ public class Events extends AppCompatActivity {
         });
     }
 
+    public void loadPic(){
+        StorageReference event1 = storage.getReferenceFromUrl("https://firebasestorage.googleapis.com/v0/b/funbook-bfd76.appspot.com/o/1.jpg?alt=media&token=2159a54b-a7ad-4ff4-81cf-a71bb6a22d08");
+        StorageReference event2 = storage.getReferenceFromUrl("https://firebasestorage.googleapis.com/v0/b/funbook-bfd76.appspot.com/o/2.jpg?alt=media&token=174a8b5e-4017-4c95-9921-b0c4ada5c8aa");
+        StorageReference event3 = storage.getReferenceFromUrl("https://firebasestorage.googleapis.com/v0/b/funbook-bfd76.appspot.com/o/3.jpg?alt=media&token=23095b80-52fa-49ae-9b56-90b0ab0835d2");
+        StorageReference event4 = storage.getReferenceFromUrl("https://firebasestorage.googleapis.com/v0/b/funbook-bfd76.appspot.com/o/4.jpg?alt=media&token=5b614c08-6934-43d4-b5b0-d29460e5e957");
+        StorageReference event5 = storage.getReferenceFromUrl("https://firebasestorage.googleapis.com/v0/b/funbook-bfd76.appspot.com/o/5.jpg?alt=media&token=52a709dd-9366-4a71-820c-7566c5218dad");
+        StorageReference event6 = storage.getReferenceFromUrl("https://firebasestorage.googleapis.com/v0/b/funbook-bfd76.appspot.com/o/6.jpg?alt=media&token=e19fc2d3-3a34-406a-8858-14283bf2c88b");
+        if (eventID.equals("1")){
+                Glide.with(this)
+                        .using(new FirebaseImageLoader())
+                        .load(event1)
+                        .into(eventImage);}
+        else if(eventID.equals("2")){
+                Glide.with(this)
+                        .using(new FirebaseImageLoader())
+                        .load(event2)
+                        .into(eventImage);}
+            else if(eventID.equals("3")){
+                Glide.with(this)
+                        .using(new FirebaseImageLoader())
+                        .load(event3)
+                        .into(eventImage);}
+            else if(eventID.equals("4")){
+                Glide.with(this)
+                        .using(new FirebaseImageLoader())
+                        .load(event4)
+                        .into(eventImage);}
+            else if(eventID.equals("5")){
+                Glide.with(this)
+                        .using(new FirebaseImageLoader())
+                        .load(event5)
+                        .into(eventImage);}
+            else{
+                Glide.with(this)
+                        .using(new FirebaseImageLoader())
+                        .load(event6)
+                        .into(eventImage);}
+
+
     }
+
+}
 

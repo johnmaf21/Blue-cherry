@@ -140,7 +140,7 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getBaseContext(), Events.class);
-                intent.putExtra("eventID","1");
+                intent.putExtra("eventID","6");
                 intent.putExtra("userID",userID);
                 startActivity(intent);
             }
@@ -185,7 +185,7 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getBaseContext(), Events.class);
-                intent.putExtra("eventID","6");
+                intent.putExtra("eventID","1");
                 intent.putExtra("userID",userID);
                 startActivity(intent);
             }
