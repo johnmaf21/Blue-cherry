@@ -56,13 +56,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Welcome to the Funbook App"
-                android:textAlignment="center"
-                android:textSize="24sp" />
         </LinearLayout>
 
         <ScrollView
@@ -74,37 +67,24 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/description"
                     android:layout_width="match_parent"
-                    android:layout_height="146dp"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/faqButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="164dp"
-                        android:layout_weight="1"
-                        android:text="FAQ" />
-
-                    <Button
-                        android:id="@+id/accountButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="165dp"
-                        android:layout_weight="1"
-                        android:text="Account" />
-                </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:text="Welcome to the Fun-book App"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    tools:ignore="MissingConstraints" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="149dp"
+                    android:layout_height="194dp"
                     android:orientation="horizontal">
 
-                    <Button
-                        android:id="@+id/aboutButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="About" />
+                    <VideoView
+                        android:id="@+id/video_views"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
 
                 </LinearLayout>
 
@@ -119,37 +99,37 @@
                 <Button
                     android:id="@+id/eventButton1"
                     android:layout_width="match_parent"
-                    android:layout_height="136dp"
+                    android:layout_height="61dp"
                     android:text="Wireless" />
 
                 <Button
                     android:id="@+id/eventButton2"
                     android:layout_width="match_parent"
-                    android:layout_height="116dp"
+                    android:layout_height="71dp"
                     android:text="Rave Mission!" />
 
                 <Button
                     android:id="@+id/eventButton3"
                     android:layout_width="match_parent"
-                    android:layout_height="119dp"
+                    android:layout_height="71dp"
                     android:text="Dub n Chill" />
 
                 <Button
                     android:id="@+id/eventButton4"
                     android:layout_width="match_parent"
-                    android:layout_height="109dp"
+                    android:layout_height="71dp"
                     android:text="mad about me" />
 
                 <Button
                     android:id="@+id/eventButton5"
                     android:layout_width="match_parent"
-                    android:layout_height="101dp"
+                    android:layout_height="71dp"
                     android:text="Reggaeton Fest 2020" />
 
                 <Button
                     android:id="@+id/eventButton6"
                     android:layout_width="match_parent"
-                    android:layout_height="106dp"
+                    android:layout_height="70dp"
                     android:text='London "Crash" Down' />
             </LinearLayout>
         </ScrollView>
@@ -160,11 +140,13 @@
         android:id="@+id/signoutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="4dp"
         android:text="Signout"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.033" />
+        app:layout_constraintVertical_bias="0.0" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

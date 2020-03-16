@@ -1,16 +1,21 @@
 package com.example.myapplication;
 
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.MediaController;
+import android.widget.VideoView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import javax.annotation.Nonnull;
 
 public class Home extends AppCompatActivity {
     //Base buttons
@@ -30,9 +35,7 @@ public class Home extends AppCompatActivity {
 
         //Initialise base buttons
         signoutBtn = findViewById(R.id.signoutButton);
-        faqBtn = findViewById(R.id.faqButton);
-        aboutBtn = findViewById(R.id.aboutButton);
-        accountBtn = findViewById(R.id.aboutButton);
+
 
         //Initialise event buttons
         button1 = findViewById(R.id.eventButton1);
@@ -58,7 +61,7 @@ public class Home extends AppCompatActivity {
         //set button selected
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+            public boolean onNavigationItemSelected(@Nonnull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.home:
                         return true;
@@ -105,35 +108,6 @@ public class Home extends AppCompatActivity {
             }
         });
 
-        faqBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), Help.class);
-                intent.putExtra("userID",userID);
-                intent.putExtra("eventID","1");
-                startActivity(intent);
-            }
-        });
-
-        aboutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), About.class);
-                intent.putExtra("userID",userID);
-                intent.putExtra("eventID","1");
-                startActivity(intent);
-            }
-        });
-
-        accountBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getBaseContext(), Account.class);
-                intent.putExtra("userID",userID);
-                intent.putExtra("eventID","1");
-                startActivity(intent);
-            }
-        });
 
         //Event buttons
         button1.setOnClickListener(new View.OnClickListener() {
@@ -190,6 +164,15 @@ public class Home extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        VideoView videoView = findViewById(R.id.video_views);
+        String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.vodeo;
+        Uri uri = Uri.parse(videoPath);
+        videoView.setVideoURI(uri);
+
+        MediaController mediaController = new MediaController(this);
+        videoView.setMediaController(mediaController);
+        mediaController.setAnchorView(videoView);
 
     }
 }

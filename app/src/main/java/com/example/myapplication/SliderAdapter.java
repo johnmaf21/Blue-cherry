@@ -1,11 +1,12 @@
 package com.example.myapplication;
 
 import android.content.Context;
-import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import javax.annotation.Nonnull;
 
 public class SliderAdapter extends PagerAdapter {
 
@@ -24,19 +25,19 @@ public class SliderAdapter extends PagerAdapter {
     }
 
     @Override
-    public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
+    public boolean isViewFromObject(@Nonnull View view, @Nonnull Object o) {
         return (view==o);
     }
 
     @Override
-    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+    public void destroyItem(@Nonnull ViewGroup container, int position, @Nonnull Object object) {
         View view = (View) object;
         container.removeView(view);
     }
 
-    @NonNull
+    @Nonnull
     @Override
-    public Object instantiateItem(@NonNull ViewGroup container, int position) {
+    public Object instantiateItem(@Nonnull ViewGroup container, int position) {
         inflater = (LayoutInflater) context.getSystemService(context.LAYOUT_INFLATER_SERVICE);
         View view = inflater.inflate(layouts[position],container,false);
         container.addView(view);
