@@ -1,6 +1,6 @@
 package com.example.myapplication;
 
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -16,6 +16,8 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+
+import javax.annotation.Nonnull;
 
 public class ForgotPassword extends AppCompatActivity {
 
@@ -48,7 +50,7 @@ public class ForgotPassword extends AppCompatActivity {
                             .get()
                             .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                                 @Override
-                                public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                public void onComplete(@Nonnull Task<QuerySnapshot> task) {
                                     if (task.isSuccessful()) {
                                         for (QueryDocumentSnapshot document : task.getResult()) {
                                             System.out.println(document.getId()+" "+document.getData().toString());

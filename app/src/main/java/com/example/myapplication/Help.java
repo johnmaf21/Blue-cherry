@@ -1,6 +1,6 @@
 package com.example.myapplication;
 
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import javax.annotation.Nonnull;
 
 public class Help extends AppCompatActivity {
     private String userID;
@@ -27,7 +29,7 @@ public class Help extends AppCompatActivity {
         //set button selected
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+            public boolean onNavigationItemSelected(@Nonnull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.home:
                         Intent intent = new Intent(getBaseContext(),Home.class);

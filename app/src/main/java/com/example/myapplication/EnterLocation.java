@@ -1,6 +1,6 @@
 package com.example.myapplication;
 
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -23,6 +23,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.annotation.Nonnull;
 
 public class EnterLocation extends AppCompatActivity {
     private Button register;
@@ -124,7 +126,7 @@ public class EnterLocation extends AppCompatActivity {
                 })
                         .addOnFailureListener(new OnFailureListener() {
                             @Override
-                            public void onFailure(@NonNull Exception e) {
+                            public void onFailure(@Nonnull Exception e) {
                                 Log.w("DocSnippets", "Error writing document", e);
                             }
                         });
@@ -132,7 +134,7 @@ public class EnterLocation extends AppCompatActivity {
         })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
-                    public void onFailure(@NonNull Exception e) {
+                    public void onFailure(@Nonnull Exception e) {
                         Log.w("DocSnippets", "Error writing document", e);
                     }
                 });
@@ -146,7 +148,7 @@ public class EnterLocation extends AppCompatActivity {
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    public void onComplete(@Nonnull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             highestID = task.getResult().size()+1;
                             createAccount(address1String,address2String,address3String,cityString,countryString,countyString,postcodeString,intent);

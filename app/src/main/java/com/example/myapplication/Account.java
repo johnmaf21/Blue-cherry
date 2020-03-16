@@ -1,6 +1,6 @@
 package com.example.myapplication;
 
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -24,6 +24,8 @@ import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.annotation.Nonnull;
 
 public class Account extends AppCompatActivity {
 
@@ -70,7 +72,7 @@ public class Account extends AppCompatActivity {
         //set botton selected
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+            public boolean onNavigationItemSelected(@Nonnull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.home:
                         Intent intent = new Intent(getBaseContext(),Home.class);
@@ -131,7 +133,7 @@ public class Account extends AppCompatActivity {
         // Get the document, forcing the SDK to use the offline cache
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+            public void onComplete(@Nonnull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
                     // Document found in the offline cache
                     final DocumentSnapshot document = task.getResult();

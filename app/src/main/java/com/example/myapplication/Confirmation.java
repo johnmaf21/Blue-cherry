@@ -7,7 +7,6 @@ import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -31,6 +30,8 @@ import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import javax.annotation.Nonnull;
 
 public class Confirmation extends AppCompatActivity {
 
@@ -63,7 +64,7 @@ public class Confirmation extends AppCompatActivity {
         //set button selected
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+            public boolean onNavigationItemSelected(@Nonnull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.home:
                         Intent intent = new Intent(getBaseContext(),Home.class);
@@ -123,7 +124,7 @@ public class Confirmation extends AppCompatActivity {
         // Get the document, forcing the SDK to use the offline cache
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+            public void onComplete(@Nonnull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
                     // Document found in the offline cache
                     final DocumentSnapshot document = task.getResult();
@@ -163,7 +164,7 @@ public class Confirmation extends AppCompatActivity {
 
         df.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+            public void onComplete(@Nonnull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()){
                     final DocumentSnapshot document = task.getResult();
                     address.setText(document.get("firstaddressline").toString() +", "+document.get("secondaddressline").toString()+ ", "+ document.get("city").toString()+", "+ document.get("country").toString()+", "+ document.get("postcode").toString());

@@ -1,6 +1,6 @@
 package com.example.myapplication;
 
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -27,6 +27,8 @@ import org.w3c.dom.Text;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
+import javax.annotation.Nonnull;
 
 public class PaymentPage extends AppCompatActivity {
 
@@ -55,7 +57,7 @@ public class PaymentPage extends AppCompatActivity {
         //set button selected
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+            public boolean onNavigationItemSelected(@Nonnull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.home:
                         Intent intent = new Intent(getBaseContext(),Home.class);
@@ -189,7 +191,7 @@ public class PaymentPage extends AppCompatActivity {
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    public void onComplete(@Nonnull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             highestID = task.getResult().size()+1;
                             addOrderToDatabase(cardNo,cvv,expiry);
@@ -205,7 +207,7 @@ public class PaymentPage extends AppCompatActivity {
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                    public void onComplete(@Nonnull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
                             highestID = task.getResult().size()+1;
                             Map<String, Object> order = new HashMap<>();
