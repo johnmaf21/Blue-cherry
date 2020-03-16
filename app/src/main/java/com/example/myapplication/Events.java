@@ -225,11 +225,11 @@ public class Events extends AppCompatActivity {
                     Date dates = times.toDate();
                     SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy");
                     String strDate = sdf.format(dates);
-                    String startTime = (new SimpleDateFormat("HHmm")).format(dates);
+                    String startTime = (new SimpleDateFormat("HH:mm a")).format(dates);
 
                     Timestamp endTime = (Timestamp) document.get("endtime");
                     Date otherDate = endTime.toDate();
-                    String strEndTime = (new SimpleDateFormat("HHmm")).format(otherDate);
+                    String strEndTime = (new SimpleDateFormat("HH:mm a")).format(otherDate);
 
                     dateTimeTV.setText(strDate+"\n"+startTime+" to "+strEndTime);
 

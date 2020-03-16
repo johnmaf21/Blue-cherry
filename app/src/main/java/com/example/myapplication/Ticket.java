@@ -62,7 +62,7 @@ public class Ticket extends AppCompatActivity {
          orderID = intent2.getString("orderID");
          totalPriceStr = intent2.getString("totalPrice");
          quantity = intent2.getString("ticketQuantity");
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
@@ -140,10 +140,10 @@ public class Ticket extends AppCompatActivity {
 
                     SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy");
                     String strDate = sdf.format(dates);
-                    String startTime = (new SimpleDateFormat("HHmm")).format(dates);
+                    String startTime = (new SimpleDateFormat("HH:mm a")).format(dates);
                     Timestamp endTime = (Timestamp) document.get("endtime");
                     Date otherDate = endTime.toDate();
-                    String strEndTime = (new SimpleDateFormat("HHmm")).format(otherDate);
+                    String strEndTime = (new SimpleDateFormat("HH:mm a")).format(otherDate);
 
                     date.setText(strDate+"\n"+startTime+" till "+strEndTime);
 

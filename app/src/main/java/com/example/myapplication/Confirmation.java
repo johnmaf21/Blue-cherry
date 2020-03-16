@@ -139,10 +139,10 @@ public class Confirmation extends AppCompatActivity {
 
                     SimpleDateFormat sdf = new SimpleDateFormat("EEE, d MMM yyyy");
                     String strDate = sdf.format(dates);
-                    String startTime = (new SimpleDateFormat("HHmm")).format(dates);
+                    String startTime = (new SimpleDateFormat("H:mm a")).format(dates);
                     Timestamp endTime = (Timestamp) document.get("endtime");
                     Date otherDate = endTime.toDate();
-                    String strEndTime = (new SimpleDateFormat("HHmm")).format(otherDate);
+                    String strEndTime = (new SimpleDateFormat("H:mm a")).format(otherDate);
                     quantityTV.setText(quantity);
 
                     date.setText(strDate+"\n"+startTime+" till "+strEndTime);
