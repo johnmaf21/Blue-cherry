@@ -31,6 +31,9 @@ public class Account extends AppCompatActivity {
     private String eventID;
     private String userID;
     private String locationID;
+    private String email;
+    private String password;
+    private String phoneNumStr;
     private TextView firstName;
     private TextView lastName;
     private TextView phoneNum;
@@ -195,19 +198,25 @@ public class Account extends AppCompatActivity {
                 Map<String, Object> edit = new HashMap<>();
                 if (editText1.getText().toString().equals(editText2.getText().toString())) {
                     if (instruction == 1 && isSame()) {
+                        password = editText1.getText().toString();
+                        if (validatePassword()){
                         edit.put("password",editText1.getText().toString());
                         mCollRef.document(userID).set(edit, SetOptions.merge());
-                        hideComponents();
+                        hideComponents();}
                     } else if (instruction == 2 && isSame()){
+                        phoneNumStr = editText1.getText().toString();
+                        if (validatePhone()){
                         phoneNum.setText(editText2.getText().toString());
                         edit.put("phoneno",editText2.getText().toString());
                         mCollRef.document(userID).set(edit,SetOptions.merge());
-                        hideComponents();
+                        hideComponents();}
                     }else if (instruction == 3 && isSame()){
+                        email = editText1.getText().toString();
+                        if(validateEmail()){
                         emailAddress.setText(editText2.getText().toString());
                         edit.put("email",editText2.getText().toString());
                         mCollRef.document(userID).set(edit,SetOptions.merge());
-                        hideComponents();
+                        hideComponents();}
                     }
                 }else {
                     System.out.println("incorrect input");
@@ -242,6 +251,50 @@ public class Account extends AppCompatActivity {
             }
         }else{
             Toast.makeText(Account.this,"Please fill in both boxes",Toast.LENGTH_SHORT).show();
+        }
+        return false;
+    }
+
+    public boolean validateEmail(){
+        if(!email.isEmpty()){
+            if(email.contains("@") && email.contains(".") && !email.endsWith(".")){
+                return true;
+            }else{
+                Toast.makeText(Account.this, "The entered email is not valid. Please add a valid email", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(Account.this, "Please enter an email", Toast.LENGTH_SHORT).show();
+
+        }
+        return false;
+    }
+
+    public boolean validatePassword(){
+        if(!password.isEmpty()){
+            if (password.length()>5 && password.length()<15){
+                return true;
+            }else{
+                Toast.makeText(Account.this, "Password must be betweeen 6 - 15 characters long", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(Account.this, "Please enter a password", Toast.LENGTH_SHORT).show();
+        }
+        return false;
+    }
+
+    public boolean validatePhone(){
+        if(!phoneNumStr.isEmpty()){
+            if (phoneNumStr.matches("[0-9]+")){
+                if (phoneNumStr.length()==11){
+                    return true;
+                }else{
+                    Toast.makeText(Account.this, "Phone number should be 11 digits long", Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                Toast.makeText(Account.this, "Please enter a phone number with only numbers", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(Account.this, "Please enter a phone number", Toast.LENGTH_SHORT).show();
         }
         return false;
     }

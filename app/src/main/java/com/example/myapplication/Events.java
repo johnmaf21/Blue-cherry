@@ -163,7 +163,12 @@ public class Events extends AppCompatActivity {
                         }else{
                             double originalPrice =Double.parseDouble(priceTV.getText().toString().substring(1));
                             int quantity = Integer.parseInt(quantityET.getText().toString());
-                            String finalPrice = String.valueOf((originalPrice*quantity)+0.30);
+                            String finalPrice;
+                            if(quantity>1){
+                                finalPrice = String.valueOf((originalPrice*quantity)+0.3);
+                            }else{
+                                finalPrice = String.valueOf(originalPrice+0.3);
+                            }
                             totalPrice.setText("£"+finalPrice);
                             ticketsAvailableTV.setText(String.valueOf(originalAvailibility-quantity));
                         }
