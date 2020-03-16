@@ -13,11 +13,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
         android:layout_marginStart="129dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="127dp"
-        android:layout_marginBottom="500dp"
         android:fontFamily="@font/montserrat"
         android:text="About Us"
         android:textColor="@android:color/black"
@@ -49,17 +47,19 @@
         android:textAlignment="center"
         android:textSize="14sp" />
 
-    <VideoView
-        android:id="@+id/video_view"
+    <LinearLayout
         android:layout_width="409dp"
-        android:layout_height="234dp"
-        android:layout_alignParentStart="true"
+        android:layout_height="237dp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="132dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="365dp" />
+        android:layout_marginTop="126dp"
+        android:orientation="horizontal">
+
+        <VideoView
+            android:id="@+id/video_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+        />
+    </LinearLayout>
 
 </RelativeLayout>
