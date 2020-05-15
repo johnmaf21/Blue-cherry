@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PaymentPage">
+
+    <TextView
+        android:id="@+id/paymentTitle"
+        android:layout_width="189dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="105dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="48dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Payment"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="32dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView13"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/payBtnBack"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.449" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/navigationBackground"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
+        app:menu="@menu/menu_navigation" />
+
+    <Button
+        android:id="@+id/payBtnBack"
+        android:layout_width="40dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="100dp"
+        android:background="?attr/homeAsUpIndicator"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="159dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="@font/montserrat"
+        android:text="The total amount is ..."
+        android:textAlignment="center"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toTopOf="@+id/totalView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/payEditTextCard"
+        android:layout_width="220dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="310dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/round_corners_register"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:hint="Card number"
+        android:inputType="number"
+        android:textColor="#FFFFE0"
+        android:textColorHint="#FFFFE0"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/payEditTextCVC"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/payBtnConfirm"
+        android:layout_width="86dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="162dp"
+        android:layout_marginTop="455dp"
+        android:layout_marginBottom="100dp"
+        android:background="#FFFFE0"
+        android:fontFamily="@font/montserrat"
+        android:text="Next"
+        android:textColor="#024174"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/payEditTextExpiry"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="380dp"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/round_corners_register"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:hint="Expiry"
+        android:inputType="date"
+        android:textColor="#FFFFE0"
+        android:textColorHint="#FFFFE0"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/payBtnConfirm"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintStart_toEndOf="@+id/payEditTextCVC" />
+
+    <EditText
+        android:id="@+id/payEditTextCVC"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="212dp"
+        android:layout_marginTop="380dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/round_corners_register"
+        android:ems="10"
+        android:fontFamily="@font/montserrat"
+        android:hint="CVV"
+        android:inputType="number"
+        android:textColor="#FFFFE0"
+        android:textColorHint="#FFFFE0"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/payBtnConfirm"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/totalView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginTop="215dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="@font/montserrat"
+        android:text="£50.20"
+        android:textSize="22dp"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toTopOf="@+id/payEditTextCard"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</RelativeLayout>

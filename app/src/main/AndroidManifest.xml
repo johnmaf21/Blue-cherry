@@ -11,19 +11,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".Ticket"></activity>
+        <activity android:name=".Orders" />
         <activity android:name=".Events" />
         <activity
             android:name=".Account"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".About" />
         <activity android:name=".Help" />
-        <activity android:name=".EnterLocation"></activity>
+        <activity android:name=".EnterLocation" />
         <activity android:name=".ForgotPassword" />
         <activity android:name=".Home" />
         <activity android:name=".Register" />
         <activity android:name=".SecondActivity" />
-        <activity android:name=".Confirmation"></activity>
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".PaymentPage" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".Confirmation" />
         <activity android:name=".IntroSlider">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

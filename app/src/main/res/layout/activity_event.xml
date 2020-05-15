@@ -7,22 +7,240 @@
     android:layout_height="match_parent"
     tools:context=".Events">
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="-3dp"
+        tools:context=".Events" />
+
     <TextView
+        android:id="@+id/eventPriceTV2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Event"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:layout_centerInParent="true"/>
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="385dp"
+        android:layout_toEndOf="@+id/eventPriceTV4"
+        android:fontFamily="@font/montserrat"
+        android:text="£9.99"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/totalTV2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="595dp"
+        android:layout_toEndOf="@+id/totalTV"
+        android:fontFamily="@font/montserrat"
+        android:text="£0.00"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/eventPriceTV4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="385dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Price:"
+        android:textColor="@android:color/black"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/eventLocationTV"
+        android:layout_width="262dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="455dp"
+        android:layout_toEndOf="@+id/eventLocationTV2"
+        android:fontFamily="@font/montserrat"
+        android:text="Cantina, Tatooine, Mos Eisley, Splatatooie, ME0 0TT"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/eventDateTimeTV2"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="505dp"
+        android:layout_toEndOf="@+id/eventDateTimeTV"
+        android:fontFamily="@font/montserrat"
+        android:text="Sat 14 March 2020\n2100 to 0400"
+        android:textSize="12dp" />
+
+    <EditText
+        android:id="@+id/chosenQuantityTV"
+        android:layout_width="58dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="542dp"
+        android:layout_toEndOf="@+id/selectQuantityTV"
+        android:fontFamily="@font/montserrat"
+        android:hint="0"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/eventLocationTV2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="455dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Location:"
+        android:textColor="@android:color/black"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/eventDateTimeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="505dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Date/Time:"
+        android:textColor="@android:color/black"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/selectQuantityTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="552dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Select Quantity:"
+        android:textColor="@android:color/black"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/totalTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="595dp"
+        android:layout_marginBottom="73dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Total Price:"
+        android:textColor="@android:color/black"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/eventTicketsTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="40dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="415dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Tickets Available:"
+        android:textColor="@android:color/black"
+        android:textSize="15dp"
+        android:textStyle="bold" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bottom_navigation"
-        app:itemBackground="@color/colorPrimary"
-        app:itemTextColor="@drawable/selector"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@color/navigationBackground"
         app:itemIconTint="@drawable/selector"
-        app:menu="@menu/menu_navigation"
-        android:layout_alignParentBottom="true"/>
+        app:itemTextColor="@drawable/selector"
+        app:menu="@menu/menu_navigation" />
+
+    <TextView
+        android:id="@+id/festivalName"
+        android:layout_width="293dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="14dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Mad About Me"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="32dp" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="match_parent"
+        android:layout_height="179dp"
+        android:layout_below="@+id/eventDescriptionTV"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/coachella" />
+
+    <Button
+        android:id="@+id/eventBackBttn"
+        android:layout_width="40dp"
+        android:layout_height="37dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="22dp"
+        android:background="?attr/homeAsUpIndicator" />
+
+    <Button
+        android:id="@+id/buyBttn"
+        android:layout_width="86dp"
+        android:layout_height="43dp"
+        android:layout_above="@+id/bottom_navigation"
+        android:layout_marginLeft="300dp"
+        android:layout_marginTop="610dp"
+        android:layout_marginBottom="18dp"
+        android:background="#FFFFE0"
+        android:text="NEXT"
+        android:textColor="#024174" />
+
+    <TextView
+        android:id="@+id/eventDescriptionTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/festivalName"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="28dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Figrin D'an and the Modal Nodes are coming back to the best venue in the universe"
+        android:textAlignment="center"
+        android:textSize="14dp" />
+
+    <TextView
+        android:id="@+id/eventPriceTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="415dp"
+        android:layout_toEndOf="@+id/eventTicketsTV"
+        android:fontFamily="@font/montserrat"
+        android:text="200"
+        android:textSize="15dp" />
 
 </RelativeLayout>

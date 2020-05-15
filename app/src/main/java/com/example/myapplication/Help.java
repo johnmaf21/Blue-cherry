@@ -1,6 +1,6 @@
 package com.example.myapplication;
 
-import androidx.annotation.NonNull;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,7 +9,11 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import javax.annotation.Nonnull;
+
 public class Help extends AppCompatActivity {
+    private String userID;
+    private String eventID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,35 +29,45 @@ public class Help extends AppCompatActivity {
         //set button selected
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+            public boolean onNavigationItemSelected(@Nonnull MenuItem menuItem) {
                 switch (menuItem.getItemId()){
                     case R.id.home:
-                        startActivity(new Intent(getApplicationContext()
-                                ,Home.class));
+                        Intent intent = new Intent(getBaseContext(),Home.class);
+                        intent.putExtra("userID",userID);
+                        intent.putExtra("eventID",eventID);
+                        startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.help:
                         return true;
                     case R.id.about_us:
-                        startActivity(new Intent(getApplicationContext()
-                                ,About.class));
+                        intent = new Intent(getBaseContext(),About.class);
+                        intent.putExtra("userID",userID);
+                        intent.putExtra("eventID",eventID);
+                        startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.account:
-                        startActivity(new Intent(getApplicationContext()
-                                ,Account.class));
+                        intent = new Intent(getBaseContext(),Account.class);
+                        intent.putExtra("userID",userID);
+                        intent.putExtra("eventID",eventID);
+                        startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.events:
-                        System.out.println("case test");
-                        startActivity(new Intent(getApplicationContext(),
-                                Events.class));
-                        System.out.println("goes to activety");
+                        intent = new Intent(getBaseContext(),Events.class);
+                        intent.putExtra("userID",userID);
+                        intent.putExtra("eventID",eventID);
+                        startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
+
                 }
                 return false;
             }
         });
+        final Bundle intent2 = getIntent().getExtras();
+        eventID = intent2.getString("eventID");
+        userID = intent2.getString("userID");
     }
 }
